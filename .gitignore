@@ -218,3 +218,14 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+# Idea
+.idea/
+.vscode/
+
+# Project ignore
+.venv/
+outputs/
+*.pt
+*.pth
