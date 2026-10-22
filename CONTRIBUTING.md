@@ -1,4 +1,4 @@
-# Quy tắc làm việc - CatBreedID
+# Quy tắc làm việc
 
 ## 1. Quản lý code
 
