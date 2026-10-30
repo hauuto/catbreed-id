@@ -229,3 +229,5 @@ __marimo__/
 outputs/
 *.pt
 *.pth
+model_package/*.npz
+model_package/ood_candidate_thresholds.json
