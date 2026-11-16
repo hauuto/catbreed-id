@@ -12,7 +12,7 @@ Nhánh: `feat/khoi-analysis`, tách từ `feat/sweep-profile` tại `9112481`.
 | Bảng geometry validation | `7588158` | Code và test xong, đã push |
 | Histogram điểm ID/OOD | `1e341b4` | Code và test giả xong, đã push; chưa chạy test/OOD thật |
 | Kiểm định ghép cặp | `bf89c20` | Code và test giả xong, đã push; chưa chạy ID test thật |
-| Thông tin VPS | — | Đã có GPU/CPU/RAM/OS/commit; còn thiếu Python/PyTorch trong virtualenv |
+| Thông tin VPS | — | Đã đủ, lưu tại `env_vps.txt` |
 | Consistency app | — | Chờ Vỹ cung cấp hàm inference Python |
 
 ## 2. Kết quả test
@@ -138,7 +138,7 @@ python scripts/paired_tests.py `
 
 Chưa tải hoặc mở `test.npz` thật. Nghiệm thu hiện chỉ dùng NPZ giả do test tạo.
 
-## 7. Thông tin VPS – đã có một phần
+## 7. Thông tin VPS – đã xong
 
 Thông tin người dùng chạy trực tiếp trên VPS đã được lưu trong `env_vps.txt`:
 
@@ -147,11 +147,14 @@ Thông tin người dùng chạy trực tiếp trên VPS đã được lưu tron
 - CPU: Intel Xeon Gold 6138, 20 core / 40 thread;
 - RAM 62 GiB, available 54 GiB tại thời điểm đo;
 - Ubuntu 22.04.5 LTS;
-- repo VPS ở commit `902f1c7` trên `feat/sweep-profile`.
+- Python 3.13.18 trong `.venv`;
+- PyTorch 2.15.0+cu132, CUDA runtime 13.2, cuDNN 92600;
+- torchvision 0.29.2+cu132;
+- `torch.cuda.is_available() = True`, nhận đúng một RTX A6000;
+- repo VPS ở commit `1e9cc07` tại thời điểm kiểm tra;
+- mount `/mnt/thanhkhoi`: 440 GiB, đã dùng 294 GiB, còn 124 GiB (71%).
 
-Phần Python/PyTorch/torchvision chưa có vì lệnh được chạy ngoài virtualenv và VPS không có alias `python`. Cần kích hoạt virtualenv của repo rồi chạy lại đúng một lệnh Python ghi trong `env_vps.txt`.
-
-Kết nối tự động từ máy agent qua alias `ssh a6000` vẫn bị server từ chối public key, nên agent chưa thể tự chạy phần còn thiếu.
+Kết nối tự động qua `ssh a6000` đã hoạt động. Phân vùng root đang ở 97%, vì vậy mọi thao tác và artifact VPS tiếp theo phải nằm dưới `/mnt/thanhkhoi`; không dùng root hay mount của thành viên khác. Bước này chỉ đọc thông tin, không chạy train và không ghi vào `--base` đang hoạt động.
 
 Không có train, GPU job hoặc file trong `--base` nào bị thay đổi.
 
@@ -190,10 +193,9 @@ Chưa viết lại preprocessing riêng hoặc ép adapter giả để tránh t�
 
 ## 10. Việc tiếp theo
 
-1. Kích hoạt virtualenv trên VPS và bổ sung phiên bản Python/PyTorch/CUDA runtime/cuDNN/torchvision vào `env_vps.txt` (hoặc cập nhật authorized key để agent tự chạy).
-2. Khi đồng đội sinh sweep, chạy `fetch_sweep.py`, rồi `rank_sweep.py`.
-3. Khi có `eval_geometry.csv`, chạy `geometry_table.py`.
-4. Khi Vỹ push predictor, hoàn thiện `app/consistency_check.py` và test.
-5. Chỉ sau khi Hậu báo đã khóa v2 mới tải dữ liệu test/OOD và chạy hai phân tích hậu khóa.
-6. Cập nhật file này bằng commit, lệnh chạy thật và artifact cuối.
+1. Khi đồng đội sinh sweep, chạy `fetch_sweep.py`, rồi `rank_sweep.py`.
+2. Khi có `eval_geometry.csv`, chạy `geometry_table.py`.
+3. Khi Vỹ push predictor tương thích v2, hoàn thiện `app/consistency_check.py` và test.
+4. Chỉ sau khi Hậu báo đã khóa v2 mới tải dữ liệu test/OOD và chạy hai phân tích hậu khóa.
+5. Cập nhật file này bằng commit, lệnh chạy thật và artifact cuối.
 
