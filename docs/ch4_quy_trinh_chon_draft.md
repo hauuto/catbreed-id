@@ -14,7 +14,7 @@ Cách làm này giúp xác định tác động riêng của từng yếu tố.
 Lưới dò gồm các yếu tố sau.
 Tốc độ học (learning rate) được dò trên 9 điểm.
 Tỷ lệ tham số được mở khóa để tinh chỉnh nhận ba mức: 25%, 50% và 100%.
-Đầu phân loại có thêm một tầng ẩn 512 chiều. [Cần xác nhận: so sánh với đầu tuyến tính hay chỉ dùng cấu hình này.]
+Đầu phân loại có thêm một tầng ẩn 512 chiều (Dropout → Linear(d, 512) → ReLU → Dropout → Linear(512, 12)). Điểm này được so sánh với đầu phân loại mặc định chỉ gồm Dropout và một tầng tuyến tính 12 chiều.
 Tỷ lệ dropout nhận hai giá trị: 0 và 0,5.
 Với mô hình CNN cơ sở (baseline), nhóm dò kết hợp giữa việc có hoặc không dùng chuẩn hóa theo lô (Batch Normalization) và tốc độ học.
 
@@ -34,7 +34,7 @@ Mức tương đồng giữa các bảng xếp hạng được đo bằng hệ s
 Cách thứ hai là tính lại thứ hạng sau khi bỏ 3 ảnh validation trùng với tập huấn luyện.
 
 Tập validation có 238 ảnh.
-Vì vậy, cặp cấu hình có F1 macro chênh nhau dưới 1/238 được đánh dấu là không phân biệt được.
+Vì vậy, cặp cấu hình có Accuracy chênh nhau dưới 1/238 (≈ 0,42 điểm phần trăm, tức ít hơn một ảnh validation) được đánh dấu là không phân biệt được.
 
 [Bảng 4.x. Kết quả giai đoạn 1 theo từng backbone: …]
 
@@ -57,7 +57,7 @@ Sau khi chọn, lượt chính thức (official) huấn luyện lại cấu hìn
 Lượt này đồng thời chạy thí nghiệm tắt tăng cường dữ liệu (ablation).
 Checkpoint dùng để triển khai được chọn dựa trên tập validation.
 Phương pháp từ chối được chọn dựa trên tập thăm dò.
-Kết quả lựa chọn được ghi vào tệp khóa `locked_selection.json` trước pha B. [Cần xác nhận: pha B là pha đánh giá trên tập test và các tập OOD.]
+Kết quả lựa chọn được ghi vào tệp khóa `locked_selection.json` trước pha B. Pha B là pha đánh giá trên tập test và các tập OOD; pha này chỉ chạy sau khi tệp khóa đã được ghi.
 
 [Bảng 4.x. Cấu hình đã khóa cho từng backbone: …]
 
@@ -67,4 +67,4 @@ Toàn bộ quy trình được thực thi tự động theo các quy tắc đã 
 Người vận hành chỉ can thiệp trong hai trường hợp.
 Trường hợp thứ nhất là khi có xung đột ở điểm kết hợp D.
 Trường hợp thứ hai là khi lượt chạy gặp lỗi.
-Cách làm này hạn chế khả năng người thực hiện vô tình điều chỉnh lựa chọn theo kết quả mong muốn.
+Cách làm này nhằm hạn chế khả năng người thực hiện điều chỉnh lựa chọn theo kết quả.
