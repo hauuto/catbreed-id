@@ -88,6 +88,33 @@ def test_log_epoch_is_fallback_when_info_omits_history(tmp_path):
     assert row["eta"] != "?"
 
 
+def test_history_csv_is_live_fallback_when_info_omits_history(tmp_path):
+    root = tmp_path / "work_tai"
+    write_info(root, "study", kind="study", status="phase_a", started_at_utc="2026-11-16T11:00:00+00:00")
+    write_info(
+        root,
+        "run",
+        display_name="Tai",
+        status="running",
+        model="resnet50",
+        sweep_point="lr_1e-4",
+        started_at_utc="2026-11-16T11:55:00+00:00",
+    )
+    history = root / "outputs" / "run" / "history.csv"
+    history.write_text(
+        "stage,epoch,seconds,val_macro_f1\n"
+        "frozen,1,2.1,0.70\n"
+        "frozen,26,2.2,0.92\n",
+        encoding="utf-8",
+    )
+    (root / "run.log").write_text("notebook output is buffered\n", encoding="utf-8")
+
+    row = summarize_workdir(root, NOW)
+
+    assert row["stage"] == "frozen"
+    assert row["epoch"] == "26"
+
+
 def test_completed_study_reports_done_and_zero_eta(tmp_path):
     root = tmp_path / "work_custom"
     write_info(

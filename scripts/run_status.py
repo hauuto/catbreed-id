@@ -1,13 +1,16 @@
 """Theo dõi các lượt chạy VPS mà không đọc kết quả test/OOD.
 
-Script chỉ mở ``run.log`` và các tệp ``info.json`` bên dưới
-``/mnt/thanhkhoi/work*``.  Tổng số điểm của bốn lượt giai đoạn 1 được lấy
-từ tên thư mục; với lượt khác, tổng chỉ hiện khi study đã ghi ``sweep_grid``.
+Script chỉ mở ``run.log``, các tệp ``info.json`` và ``history.csv`` nằm ngay
+cạnh info của lượt huấn luyện bên dưới ``/mnt/thanhkhoi/work*``.  Notebook
+hiện không lưu ``history`` vào info nên CSV là nguồn fallback an toàn cho
+stage/epoch. Tổng số điểm của bốn lượt giai đoạn 1 được lấy từ tên thư mục;
+với lượt khác, tổng chỉ hiện khi study đã ghi ``sweep_grid``.
 """
 
 from __future__ import annotations
 
 import argparse
+import csv
 import glob
 import json
 import os
@@ -108,21 +111,36 @@ def stage_name(label: str) -> str:
     return label.strip() or "-"
 
 
-def progress_from_history(info: InfoFile | None) -> tuple[str, str]:
+def progress_from_history(info: InfoFile | None) -> tuple[str, str, int | None, int | None]:
     if info is None:
-        return "-", "-"
+        return "-", "-", None, None
     history = info.data.get("history")
     if not isinstance(history, list) or not history:
-        return "-", "-"
+        try:
+            with info.path.with_name("history.csv").open(newline="", encoding="utf-8-sig") as handle:
+                history = list(csv.DictReader(handle))
+        except (OSError, UnicodeError, csv.Error):
+            history = []
+    if not history:
+        return "-", "-", None, None
     row = history[-1]
     if not isinstance(row, dict):
-        return "-", "-"
+        return "-", "-", None, None
     stage = str(row.get("stage") or "-")
     epoch = row.get("epoch")
     maximum = row.get("max_epochs") or row.get("epochs") or row.get("epoch_total")
     if epoch is None:
-        return stage, "-"
-    return stage, f"{epoch}/{maximum}" if maximum is not None else str(epoch)
+        return stage, "-", None, None
+    try:
+        epoch_value = int(epoch)
+    except (TypeError, ValueError):
+        return stage, str(epoch), None, None
+    try:
+        maximum_value = int(maximum) if maximum not in (None, "") else None
+    except (TypeError, ValueError):
+        maximum_value = None
+    text = f"{epoch_value}/{maximum_value}" if maximum_value is not None else str(epoch_value)
+    return stage, text, epoch_value, maximum_value
 
 
 def progress_from_log(log: str) -> tuple[str, str, int | None, int | None]:
@@ -257,10 +275,11 @@ def summarize_workdir(directory: Path, now: datetime | None = None) -> dict[str,
             owner = inferred
 
     point, total, _, completed_points = point_progress(directory, study, runs, current)
-    stage, epoch = progress_from_history(current)
-    parsed_stage, parsed_epoch, epoch_value, epoch_total = progress_from_log(log)
+    stage, epoch, epoch_value, epoch_total = progress_from_history(current)
+    parsed_stage, parsed_epoch, parsed_epoch_value, parsed_epoch_total = progress_from_log(log)
     if parsed_epoch != "-":
         stage, epoch = parsed_stage, parsed_epoch
+        epoch_value, epoch_total = parsed_epoch_value, parsed_epoch_total
     elif stage == "-" and study_status in ACTIVE_STATUSES:
         stage = str(study_status)
 
