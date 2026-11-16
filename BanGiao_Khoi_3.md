@@ -152,7 +152,14 @@ Không có train, GPU job hoặc file trong `--base` nào bị thay đổi.
 
 ## 8. Consistency app – chưa xong
 
-Repo và các branch remote hiện chưa có predictor của Vỹ; `app/__init__.py` mới chỉ có `/health`.
+Nhánh hiện tại mới có `/health`. Đã tìm thấy predictor của Vỹ trên `origin/feature/thezyx` (`app/api/real_model.py`, commit `0c14b48`) với `ResNet50Classifier.predict_raw()` và `predict()`.
+
+Chưa thể dùng trực tiếp predictor này cho consistency v2 vì:
+
+- package của Vỹ hiện nhận `weights.pth` và `ood_stats.npz`;
+- bàn giao v2 yêu cầu `checkpoint.pt`, `thresholds.json`, `calibration.json`, `distance_parameters.npz`;
+- implementation hiện cố định ResNet50, trong khi checkpoint triển khai v2 chưa được khóa và có thể là backbone khác;
+- tên score trả về cũng chưa đồng nhất hoàn toàn với notebook.
 
 Cần Vỹ chốt hàm Python của app, tối thiểu:
 
@@ -167,7 +174,7 @@ và cách:
 - trả đúng năm score;
 - xác định logits trước hay sau temperature scaling.
 
-Chưa viết lại preprocessing riêng để tránh tạo một implementation không đại diện cho app.
+Chưa viết lại preprocessing riêng hoặc ép adapter giả để tránh tạo một implementation không đại diện cho app. Cần Vỹ cập nhật predictor/package contract hoặc chốt adapter chính thức trước khi viết consistency checker.
 
 ## 9. Tuân thủ khóa dữ liệu
 
