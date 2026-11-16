@@ -1,0 +1,22 @@
+{
+ "profile": "sweep",
+ "protocol_id": "Nhom09_v2_2026-11-16",
+ "training_seeds": [
+  42
+ ],
+ "frozen_epochs": 2,
+ "finetuned_epochs": 2,
+ "baseline_epochs": 80,
+ "owner": "Vy",
+ "models": [
+  "efficientnet_b0"
+ ],
+ "sweep_grid": [
+  {
+   "name": "drop0",
+   "overrides": {
+    "dropout": 0.0
+   }
+  }
+ ]
+}

@@ -1,0 +1,131 @@
+{
+ "profile": "sweep",
+ "protocol_id": "Nhom09_v2_2026-11-16",
+ "training_seeds": [
+  42
+ ],
+ "frozen_epochs": 30,
+ "finetuned_epochs": 30,
+ "baseline_epochs": 80,
+ "owner": "Hau",
+ "models": [
+  "cnn_baseline",
+  "resnet50"
+ ],
+ "sweep_grid": [
+  {
+   "name": "bl_bn0_lr0.01",
+   "models": [
+    "cnn_baseline"
+   ],
+   "overrides": {
+    "baseline_batchnorm": false,
+    "baseline_lr": 0.01
+   }
+  },
+  {
+   "name": "bl_bn0_lr0.001",
+   "models": [
+    "cnn_baseline"
+   ],
+   "overrides": {
+    "baseline_batchnorm": false,
+    "baseline_lr": 0.001
+   }
+  },
+  {
+   "name": "bl_bn0_lr0.0001",
+   "models": [
+    "cnn_baseline"
+   ],
+   "overrides": {
+    "baseline_batchnorm": false,
+    "baseline_lr": 0.0001
+   }
+  },
+  {
+   "name": "bl_bn1_lr0.01",
+   "models": [
+    "cnn_baseline"
+   ],
+   "overrides": {
+    "baseline_batchnorm": true,
+    "baseline_lr": 0.01
+   }
+  },
+  {
+   "name": "bl_bn1_lr0.001",
+   "models": [
+    "cnn_baseline"
+   ],
+   "overrides": {
+    "baseline_batchnorm": true,
+    "baseline_lr": 0.001
+   }
+  },
+  {
+   "name": "bl_bn1_lr0.0001",
+   "models": [
+    "cnn_baseline"
+   ],
+   "overrides": {
+    "baseline_batchnorm": true,
+    "baseline_lr": 0.0001
+   }
+  },
+  {
+   "name": "unf25",
+   "overrides": {
+    "fine_tune_fraction": 0.25
+   },
+   "models": [
+    "resnet50"
+   ]
+  },
+  {
+   "name": "unf50",
+   "overrides": {
+    "fine_tune_fraction": 0.5
+   },
+   "models": [
+    "resnet50"
+   ]
+  },
+  {
+   "name": "unf100",
+   "overrides": {
+    "fine_tune_fraction": 1.0
+   },
+   "models": [
+    "resnet50"
+   ]
+  },
+  {
+   "name": "head512",
+   "overrides": {
+    "head_hidden": 512
+   },
+   "models": [
+    "resnet50"
+   ]
+  },
+  {
+   "name": "drop0",
+   "overrides": {
+    "dropout": 0.0
+   },
+   "models": [
+    "resnet50"
+   ]
+  },
+  {
+   "name": "drop50",
+   "overrides": {
+    "dropout": 0.5
+   },
+   "models": [
+    "resnet50"
+   ]
+  }
+ ]
+}

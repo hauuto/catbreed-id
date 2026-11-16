@@ -1,0 +1,88 @@
+{
+ "profile": "sweep",
+ "protocol_id": "Nhom09_v2_2026-11-16",
+ "training_seeds": [
+  42
+ ],
+ "frozen_epochs": 30,
+ "finetuned_epochs": 30,
+ "baseline_epochs": 80,
+ "owner": "Tai",
+ "models": [
+  "resnet50"
+ ],
+ "sweep_grid": [
+  {
+   "name": "lr_f0.0003_b1e-06",
+   "overrides": {
+    "frozen_lr": 0.0003,
+    "backbone_lr": 1e-06,
+    "head_lr": 9.999999999999999e-06
+   }
+  },
+  {
+   "name": "lr_f0.0003_b1e-05",
+   "overrides": {
+    "frozen_lr": 0.0003,
+    "backbone_lr": 1e-05,
+    "head_lr": 0.0001
+   }
+  },
+  {
+   "name": "lr_f0.0003_b0.0001",
+   "overrides": {
+    "frozen_lr": 0.0003,
+    "backbone_lr": 0.0001,
+    "head_lr": 0.001
+   }
+  },
+  {
+   "name": "lr_f0.001_b1e-06",
+   "overrides": {
+    "frozen_lr": 0.001,
+    "backbone_lr": 1e-06,
+    "head_lr": 9.999999999999999e-06
+   }
+  },
+  {
+   "name": "lr_f0.001_b1e-05",
+   "overrides": {
+    "frozen_lr": 0.001,
+    "backbone_lr": 1e-05,
+    "head_lr": 0.0001
+   }
+  },
+  {
+   "name": "lr_f0.001_b0.0001",
+   "overrides": {
+    "frozen_lr": 0.001,
+    "backbone_lr": 0.0001,
+    "head_lr": 0.001
+   }
+  },
+  {
+   "name": "lr_f0.003_b1e-06",
+   "overrides": {
+    "frozen_lr": 0.003,
+    "backbone_lr": 1e-06,
+    "head_lr": 9.999999999999999e-06
+   }
+  },
+  {
+   "name": "lr_f0.003_b1e-05",
+   "overrides": {
+    "frozen_lr": 0.003,
+    "backbone_lr": 1e-05,
+    "head_lr": 0.0001
+   }
+  },
+  {
+   "name": "lr_f0.003_b0.0001",
+   "overrides": {
+    "frozen_lr": 0.003,
+    "backbone_lr": 0.0001,
+    "head_lr": 0.001
+   }
+  }
+ ]
+}
