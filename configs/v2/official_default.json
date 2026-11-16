@@ -5,5 +5,10 @@
  "frozen_epochs": 30,
  "finetuned_epochs": 30,
  "baseline_epochs": 80,
- "knn_k": 10
+ "knn_k": 10,
+ "unseen_cat_root": "/mnt/thanhkhoi/input/felibreed",
+ "unseen_cat_classes": [
+  "Mixed Breed",
+  "Local"
+ ]
 }
