@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 
 import pandas as pd
 import pytest
@@ -73,3 +74,36 @@ def test_discovery_excludes_its_own_output(tmp_path):
     output = tmp_path / "outputs" / "stage1_inputs"
     fetch_sweep.run_local(tmp_path, output, None, False, False)
     assert fetch_sweep.find_local_sources(tmp_path, output) == [study]
+
+
+def test_fetches_hf_study_with_mocked_download(tmp_path, monkeypatch):
+    monkeypatch.setenv("HF_TOKEN", "fake-token")
+
+    def fake_list(self, repo_id, repo_type):
+        return [
+            "runs/study_hf/info.json",
+            "runs/study_hf/sweep_results.csv",
+            "runs/study_hf/run/frozen/calibration.json",
+        ]
+
+    def fake_download(repo_id, repo_type, filename, token, local_dir):
+        path = Path(local_dir) / filename
+        path.parent.mkdir(parents=True, exist_ok=True)
+        if path.name == "info.json":
+            path.write_text(
+                json.dumps(
+                    {"run_id": "study_hf", "owner": "Vy", "protocol_id": fetch_sweep.EXPECTED_PROTOCOL}
+                ),
+                encoding="utf-8",
+            )
+        elif path.name == "sweep_results.csv":
+            pd.DataFrame([{"sweep_point": "unf50", "model": "efficientnet_b0"}]).to_csv(path, index=False)
+        else:
+            path.write_text(json.dumps({"n_images": 100}), encoding="utf-8")
+        return str(path)
+
+    monkeypatch.setattr("huggingface_hub.HfApi.list_repo_files", fake_list)
+    monkeypatch.setattr("huggingface_hub.hf_hub_download", fake_download)
+    targets = fetch_sweep.run_hf("study_hf", tmp_path / "collected", None, True, False)
+    assert (targets[0] / "sweep_results.csv").is_file()
+    assert (targets[0] / "calibration.json").is_file()
