@@ -76,11 +76,15 @@ def main():
     parser.add_argument("--config", required=True, help="JSON: các khóa ghi đè CONFIG của lượt chạy")
     parser.add_argument("--base", required=True, help="Thư mục làm việc riêng của lượt chạy")
     parser.add_argument("--input", required=True, help="Thư mục chứa archive gốc (và unseen_cat)")
+    parser.add_argument("--data-dir", help="Thư mục giải nén dùng chung (tiết kiệm đĩa); mặc định <base>/official_data")
     parser.add_argument("--branch", default="feat/sweep-profile")
     parser.add_argument("--dry-run", action="store_true", help="Chỉ tạo notebook, không chạy")
     args = parser.parse_args()
 
     overrides = json.loads(Path(args.config).read_text(encoding="utf-8"))
+    if args.data_dir:
+        # Lượt đầu tiên giải nén; các lượt sau thấy dấu đã giải nén nên không giải nén lại, vẫn kiểm MD5 archive
+        overrides["official_data_dir"] = str(Path(args.data_dir).resolve())
     if overrides.get("profile") not in ["smoke", "sweep", "official"]:
         sys.exit("Cấu hình phải có profile smoke, sweep hoặc official.")
     if not args.dry_run and not os.environ.get("HF_TOKEN"):
