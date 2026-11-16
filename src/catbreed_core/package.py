@@ -23,6 +23,7 @@ class Package:
     locked_selection: dict  # {} nếu không có locked_selection.json
     saved: dict  # checkpoint đã nạp (model_name, config, ...)
     checkpoint_sha256: str
+    is_smoke_test: bool  # như load_inference_bundle của notebook: gói của profile smoke không dùng để phục vụ
     device: str = "cpu"
 
 
@@ -63,6 +64,7 @@ def load_package(directory, device="cpu"):
         locked_selection=locked,
         saved=saved,
         checkpoint_sha256=digest,
+        is_smoke_test=saved["config"].get("profile") == "smoke",
         device=device,
     )
 
@@ -70,9 +72,12 @@ def load_package(directory, device="cpu"):
 def predict_arrays(pkg, image, exif=False):
     # image: đường dẫn hoặc PIL.Image. Trả (logits thô [1, 12], đặc trưng sau GAP [1, d], điểm T = 1).
     if exif:
-        source = image if isinstance(image, Image.Image) else Image.open(image)
-        source.load()
-        image = ImageOps.exif_transpose(source)
+        if isinstance(image, Image.Image):
+            image = ImageOps.exif_transpose(image)
+        else:
+            with Image.open(image) as source:  # đóng file sau khi xoay
+                source.load()
+                image = ImageOps.exif_transpose(source)
     tensor = eval_transform()(read_rgb_image(image)).unsqueeze(0).to(pkg.device)
     with torch.no_grad():
         features = pkg.model.forward_features(tensor)
