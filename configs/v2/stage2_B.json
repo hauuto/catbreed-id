@@ -1,0 +1,28 @@
+{
+  "profile": "sweep",
+  "protocol_id": "Nhom09_v2_2026-11-16",
+  "training_seeds": [
+    43,
+    44
+  ],
+  "frozen_epochs": 30,
+  "finetuned_epochs": 30,
+  "baseline_epochs": 80,
+  "owner": "Khoi",
+  "models": [
+    "mobilenet_v2"
+  ],
+  "sweep_grid": [
+    {
+      "name": "stage2_B_head512",
+      "overrides": {
+        "head_hidden": 512
+      }
+    }
+  ],
+  "stage2_source": {
+    "kind": "stage1_rank",
+    "sweep_point": "head512",
+    "rank": 1
+  }
+}
