@@ -1,0 +1,9 @@
+{
+ "profile": "official",
+ "protocol_id": "Nhom09_v2_2026-11-16",
+ "owner": "VPS_default",
+ "frozen_epochs": 30,
+ "finetuned_epochs": 30,
+ "baseline_epochs": 80,
+ "knn_k": 10
+}
