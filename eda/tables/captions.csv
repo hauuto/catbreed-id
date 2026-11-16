@@ -1,0 +1,38 @@
+﻿Loại,Số,Tệp,Tiêu đề
+Bảng,Bảng 3.1,00_archive_md5,Kiểm tra MD5 của ba archive gốc
+Bảng,Bảng 3.2,A1_dataset_description,Mô tả bốn tập dữ liệu
+Bảng,Bảng 3.3,A2_image_quality,"Ảnh lỗi, định dạng thật, chế độ màu và cờ xoay EXIF"
+Bảng,Bảng 3.4,A2_non_rgb_exif_or_format_mismatch,"Ảnh không phải RGB, có thẻ EXIF Orientation khác 1 hoặc định dạng khác đuôi tệp"
+Bảng,Bảng 3.5,A3_image_size_summary,Tóm tắt kích thước ảnh của bốn tập
+Hình,Hình 3.1,A3_short_side_hist,"Phân bố cạnh ngắn của ảnh trong bốn tập (thang log); nét chấm: 224 pixel, nét đứt: 256 pixel"
+Hình,Hình 3.2,A3_aspect_ratio_hist,Phân bố tỷ lệ khung rộng/cao của ảnh trong bốn tập; nét đứt: ảnh vuông
+Hình,Hình 3.3,A4_cat_breeds_6_each,"Sáu ảnh ngẫu nhiên (seed 0) của mỗi giống mèo, trainval"
+Hình,Hình 3.4,A4_dogs_probe_12_random,"Mười hai ảnh ngẫu nhiên (seed 0) của tập thăm dò, chó trainval"
+Hình,Hình 3.5,A4_dtd_12_random,Mười hai ảnh ngẫu nhiên (seed 0) của DTD
+Hình,Hình 3.6,A4_felibreed_12_random,Mười hai ảnh ngẫu nhiên (seed 0) của FeliBreed
+Bảng,Bảng 3.6,B1_breed_counts_train_val,Số ảnh mỗi giống mèo trong train và validation
+Bảng,Bảng 3.7,B1_imbalance_ratio,Mức mất cân bằng giữa các giống
+Hình,Hình 3.7,B1_breed_counts_train_val,Số ảnh mỗi giống mèo trong train và validation
+Bảng,Bảng 3.8,near_duplicates_trainval,Danh sách cặp ảnh gần trùng trong mèo trainval (Hamming ≤ 8)
+Bảng,Bảng 3.9,B2_near_duplicate_threshold_counts,Số cặp gần trùng trong mèo trainval theo ngưỡng Hamming
+Hình,Hình 3.8,B2_near_duplicate_examples,Các cặp ảnh gần trùng trong mèo trainval theo khoảng cách Hamming của phash
+Bảng,Bảng 3.10,B3_felibreed_near_duplicate_counts,Số cặp gần trùng của FeliBreed theo ngưỡng Hamming
+Bảng,Bảng 3.11,near_duplicates_felibreed,Danh sách cặp ảnh gần trùng liên quan tới FeliBreed (Hamming ≤ 8)
+Hình,Hình 3.9,B3_felibreed_internal_examples,Các cặp ảnh gần trùng trong nội bộ FeliBreed
+Bảng,Bảng 3.12,B4_felibreed_breed_names,Thư mục giống trong FeliBreed và quyết định giữ hoặc loại
+Bảng,Bảng 3.13,C1_trimap_foreground_summary,"Diện tích và độ lệch tâm của con vật theo trimap, mèo trainval"
+Hình,Hình 3.10,C1_foreground_fraction_hist,"Phân bố tỷ lệ diện tích con vật trên ảnh theo trimap, mèo trainval"
+Hình,Hình 3.11,C1_foreground_centre_heatmap,"Vị trí tâm con vật trong ảnh theo từng giống, mèo trainval; dấu + là tâm ảnh"
+Bảng,Bảng 3.14,C2_crop_retention_summary,Tiền cảnh còn lại sau Resize 256 → CenterCrop 224
+Bảng,Bảng 3.15,C2_crop_retention_by_breed,Tiền cảnh còn lại sau cắt giữa theo giống
+Hình,Hình 3.12,C2_crop_retention_hist,"Tỷ lệ pixel con vật còn lại sau Resize 256 → CenterCrop 224, mèo trainval"
+Hình,Hình 3.13,C2_crop_retention_worst,Tám ảnh mất nhiều tiền cảnh nhất khi cắt giữa; khung đỏ là phần còn lại
+Bảng,Bảng 3.16,C3_head_box_summary,"Hộp bao vùng đầu: số ảnh có hộp, kích thước và phần bị cắt"
+Hình,Hình 3.14,C3_head_box_hist,Kích thước tương đối của hộp đầu (trái) và phần hộp đầu còn lại sau cắt giữa (phải)
+Hình,Hình 3.15,C4_image_stats_by_breed,"Độ sáng, độ tương phản, độ nét và độ bão hòa theo giống, mèo trainval"
+Hình,Hình 3.16,C4_image_stats_by_dataset,"Độ sáng, độ tương phản, độ nét và độ bão hòa theo tập dữ liệu"
+Bảng,Bảng 3.17,C4_median_stats_by_breed,"Trung vị các thống kê ảnh theo giống, mèo trainval"
+Bảng,Bảng 3.18,C4_breed_deviation_iqr,"Độ lệch trung vị của từng giống so với toàn bộ ID, tính theo IQR"
+Bảng,Bảng 3.19,C4_median_stats_by_dataset,Trung vị các thống kê ảnh theo tập dữ liệu
+Bảng,Bảng 3.20,C5_manual_review_counts,Kết quả duyệt bằng mắt 30 ảnh mỗi giống
+Bảng,Bảng 3.21,C6_ood_similarity_image_stats,Mức giống mèo ID của từng tập OOD theo thống kê ảnh (KS D)

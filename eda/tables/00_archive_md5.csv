@@ -1,0 +1,4 @@
+﻿Archive,MD5 yêu cầu,MD5 thực tế,Khớp
+images.tar.gz,5c4f3ee8e5d25df40f4fd59a7f44e54c,5c4f3ee8e5d25df40f4fd59a7f44e54c,True
+annotations.tar.gz,95a8c909bbe2e81eed6a22bccdf3f68f,95a8c909bbe2e81eed6a22bccdf3f68f,True
+dtd-r1.0.1.tar.gz,fff73e5086ae6bdbea199a49dfb8a4c1,fff73e5086ae6bdbea199a49dfb8a4c1,True
