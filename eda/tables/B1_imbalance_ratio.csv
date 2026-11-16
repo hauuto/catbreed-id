@@ -1,0 +1,4 @@
+﻿Phần,Lớp nhiều nhất,Lớp ít nhất,Tỷ lệ lớn nhất / nhỏ nhất
+train,Abyssinian (80),Egyptian_Mau (74),1.081
+val,Abyssinian (20),Bombay (19),1.053
+trainval,Abyssinian (100),Egyptian_Mau (93),1.075

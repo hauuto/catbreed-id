@@ -1,0 +1,5 @@
+﻿Tập,Vai trò,"Nguồn, cách thu thập",Giấy phép,Số ảnh (phạm vi EDA),Số lớp,Ý nghĩa nhãn
+"Oxford-IIIT Pet, 12 giống mèo",ID (train / validation),"Parkhi và cs., CVPR 2012; ảnh lấy từ Internet, nhãn giống, trimap và hộp bao vùng đầu do người gán",CC BY-SA 4.0 (nhãn); bản quyền ảnh thuộc chủ ảnh,1188,12,"Giống của con mèo chính trong ảnh; trimap 1 = con vật, 2 = nền, 3 = biên; hộp bao vùng đầu (chỉ một phần ảnh)"
+"Oxford-IIIT Pet, 25 giống chó","Tập thăm dò (500 ảnh chó trainval); near-OOD (chó test, sau khóa)",Như trên,Như trên,2492,25,Giống chó; với CatBreedID chỉ mang nghĩa “không phải mèo thuộc 12 giống”
+DTD r1.0.1,Far-OOD,"Cimpoi và cs., CVPR 2014; ảnh kết cấu từ Google và Flickr, nhãn kiểm qua Amazon Mechanical Turk",Dùng cho nghiên cứu (theo trang DTD); bản quyền ảnh thuộc chủ ảnh,5640,47,Tên kết cấu (47 nhóm × 120 ảnh); không có con vật
+FeliBreed (Mixed Breed + Local),"unseen_cat: mèo ngoài 12 giống, chỉ mô tả","Mahi, Arnab, Khan; Mendeley Data v2, 26/08/2025, DOI 10.17632/ng6tv57j5c.2; tác giả không mô tả cách thu thập và gán nhãn",CC BY 4.0,94,2,"Tên thư mục do tác giả đặt: “Mixed Breed” (mèo lai), “Local” (mèo ta); chưa được kiểm độc lập"
