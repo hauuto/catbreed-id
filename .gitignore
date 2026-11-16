@@ -227,6 +227,10 @@ __marimo__/
 # Project ignore
 .venv/
 outputs/
+.venv-notebook/
+.test_tmp/
+pytest-cache-files-*/
+model_package/
 *.pt
 *.pth
 model_package/*.npz

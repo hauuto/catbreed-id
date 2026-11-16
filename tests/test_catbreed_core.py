@@ -55,26 +55,28 @@ def write_package(directory, sha_override=None):
 
 # 1. Dữ liệu thật: cần HF_TOKEN và OXFORD_PETS_ROOT (thư mục oxford-iiit-pet, chứa images/<image_id>.jpg)
 def test_real_validation_images_match_stored_outputs():
+    supplied = os.environ.get("CATBREED_TEST_PACKAGE")
     token = os.environ.get("HF_TOKEN")
-    if not token:
+    if not supplied and not token:
         pytest.skip("Cần biến môi trường HF_TOKEN")
     root = os.environ.get("OXFORD_PETS_ROOT")
-    if not root or not (Path(root) / "images").is_dir():
+    images = Path(os.environ["OXFORD_PETS_IMAGES"]) if os.environ.get("OXFORD_PETS_IMAGES") else (Path(root) / "images" if root else None)
+    if images is None or not images.is_dir():
         pytest.skip("Cần OXFORD_PETS_ROOT trỏ tới thư mục oxford-iiit-pet có images/")
     import pandas as pd
     from huggingface_hub import hf_hub_download
 
-    local = {
+    local = {name: str(Path(supplied) / name) for name in FILES} if supplied else {
         name: hf_hub_download(REPO_ID, STAGE + name, repo_type="dataset", token=token) for name in FILES
     }
     directory = Path(local["checkpoint.pt"]).parent
-    pkg = load_package(directory)
+    pkg = load_package(directory, device=os.environ.get("CATBREED_TEST_DEVICE", "cpu"))
     with np.load(local["val.npz"], allow_pickle=False) as stored:
         image_ids, stored_logits = stored["image_id"][:20], stored["logits"][:20]
     table = pd.read_csv(local["validation_scores.csv"]).iloc[:20]
     assert table["image_id"].tolist() == image_ids.tolist()
     for index, image_id in enumerate(image_ids):
-        logits, _, scores = predict_arrays(pkg, Path(root) / "images" / f"{image_id}.jpg", exif=False)
+        logits, _, scores = predict_arrays(pkg, images / f"{image_id}.jpg", exif=False)
         assert np.max(np.abs(logits[0] - stored_logits[index])) < 1e-4
         for method in ["MSP", "MaxLogit", "Energy", "KNN"]:
             assert abs(scores[method][0] - table[method].iloc[index]) < 1e-4

@@ -1169,3 +1169,11 @@ tbody tr:hover td {
         scroll-behavior: auto !important;
     }
 }
+/* Deployment metadata stays in an optional disclosure below the main decision. */
+.model-details { margin-top: 16px; font-size: 14px; }
+.model-details summary { cursor: pointer; font-weight: 600; }
+.model-details dl { margin: 16px 0 0; }
+.model-details dt { margin-top: 10px; font-weight: 600; }
+.model-details dd { margin: 4px 0 0; overflow-wrap: anywhere; }
+.model-details table { width: 100%; margin-top: 12px; }
+.checkpoint-digest { font-family: monospace; font-size: 12px; }

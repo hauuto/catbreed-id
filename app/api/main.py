@@ -45,8 +45,18 @@ class OODItem(BaseModel):
 class ModelMetadata(BaseModel):
     backbone: str = Field(..., description="Kiến trúc mạng nơ-ron nền tảng (MobileNetV2, EfficientNet-B0)")
     mode: str = Field(..., description="Chế độ mô hình: feature_extractor hoặc fine_tuning")
-    seed: int = Field(..., description="Hạt giống ngẫu nhiên đảm bảo tính tái lập")
+    seed: Optional[int] = Field(..., description="Hạt giống từ run_id nếu có")
     checkpoint_id: str = Field(..., description="Mã định danh phiên bản checkpoint hoặc commit hash")
+    model_name: Optional[str] = None
+    stage: Optional[str] = None
+    run_id: Optional[str] = None
+    checkpoint_sha256: Optional[str] = None
+    rejection_method: Optional[str] = None
+    threshold: Optional[float] = None
+    temperature: Optional[float] = None
+    precision: Optional[str] = None
+    device: Optional[str] = None
+    exif_transpose: Optional[bool] = None
 
 
 class PredictResponse(BaseModel):
@@ -61,6 +71,7 @@ class PredictResponse(BaseModel):
     cam_input: Optional[str] = Field(None, description="Ảnh đầu vào mô hình 224x224 mã hóa Base64 PNG để hiển thị Grad-CAM")
     latency_ms: int = Field(0, description="Thời gian trễ xử lý suy luận và tính toán (mili-giây)")
     is_mock: bool = Field(True, description="True nếu kết quả từ mô hình tạm giả lập")
+    timings_ms: Optional[dict[str, float]] = None
 
 
 class HealthResponse(BaseModel):
@@ -98,9 +109,10 @@ model_mode = os.environ.get("CATBREED_MODEL", "real")
 if model_mode == "mock":
     classifier: BaseCatClassifier = MockCatClassifier()
 elif model_mode == "real":
-    from .real_model import ResNet50Classifier
-    checkpoint_path = Path(__file__).resolve().parents[2] / "model_package" / "weights.pth"
-    classifier = ResNet50Classifier(checkpoint_path)
+    from .real_model import DeploymentClassifier
+    package_dir = Path(os.environ.get("CATBREED_MODEL_PACKAGE", str(Path(__file__).resolve().parents[2] / "model_package")))
+    classifier = DeploymentClassifier(package_dir, precision=os.environ.get("CATBREED_PRECISION", "float32"),
+                                      device=os.environ.get("CATBREED_DEVICE", "cpu"))
 else:
     raise ValueError("CATBREED_MODEL phải là real hoặc mock")
 

@@ -20,21 +20,26 @@ python -m venv .venv
 
 ## 3. Chạy ứng dụng local
 
-API mặc định sử dụng checkpoint ResNet50 fine-tuned tại `model_package/weights.pth`.
-File này bị Git bỏ qua theo quy tắc `*.pth`; khi chuyển project sang máy khác,
-cần sao chép checkpoint tương ứng vào cùng đường dẫn. Checkpoint chứa thứ tự
-12 nhãn và cấu hình tiền xử lý. API trả dự đoán thật cùng Grad-CAM của lớp có
-điểm cao nhất. Do chưa chốt ngưỡng OOD của checkpoint, API trả
-`status: unverified` và `ood: null`; không sử dụng ngưỡng giả để từ chối ảnh.
-Nếu có `model_package/ood_stats.npz` được tạo từ `export.npz` bằng
-`python scripts/prepare_ood.py`, API hiển thị điểm thực của 5 phương pháp trong
-`ood_all`, nhưng ngưỡng và kết luận vẫn để trống. Script dùng đặc trưng train,
-tính các ngưỡng gợi ý trên validation và không dùng test để chọn ngưỡng;
-`ood_candidate_thresholds.json` chỉ để đối chiếu, chưa được tự động áp dụng.
-Checkpoint hiện dùng resize cạnh ngắn 256 (song tuyến), crop giữa 224 × 224
-và chuẩn hóa ImageNet. Khởi động lại API sau khi thay checkpoint hoặc mã.
-Ảnh theo EXIF có thể hiển thị khác hướng khi so với trình duyệt; Grad-CAM được
-vẽ trên ảnh 224 × 224 sau tiền xử lý giống đường đánh giá huấn luyện.
+API nạp gói checkpoint theo notebook official v2 trong `model_package/`:
+`checkpoint.pt`, `thresholds.json`, `calibration.json`, `distance_parameters.npz`,
+`locked_selection.json`. Các file này được cung cấp riêng, không đưa lên Git.
+Thêm `val.npz` và `validation_scores.csv` cùng checkpoint để chạy kiểm khớp.
+Có thể đổi thư mục bằng biến môi trường `CATBREED_MODEL_PACKAGE`.
+
+App hỗ trợ ResNet50, MobileNetV2, EfficientNet-B0 và CNN baseline; dựng kiến trúc
+từ checkpoint, kiểm SHA-256 các file đã khóa và nạp trọng số strict=True.
+Phương pháp từ chối lấy từ locked_selection; điểm ở T=1 so với ngưỡng T1.
+Top-5 dùng softmax với nhiệt độ trong calibration. Khi từ chối, top_label=null.
+Chế độ nâng cao hiển thị 5 điểm/ngưỡng, lượt chạy và mã SHA-256.
+
+Tiền xử lý ghép alpha lên nền xám 128, resize cạnh ngắn 256 song tuyến,
+crop giữa 224 × 224, chuẩn hóa ImageNet. Web xoay EXIF; script kiểm khớp tắt EXIF.
+Grad-CAM vẽ trên ảnh 224 × 224 sau tiền xử lý. Mặc định suy luận float32 như notebook;
+`CATBREED_PRECISION=float64` chỉ dành cho chẩn đoán và phải kiểm khớp lại riêng.
+Khởi động lại API sau khi thay gói hoặc mã.
+
+Xem [kết quả kiểm tra hiện tại](docs/official_v2_web_validation.md) trước khi dùng
+ảnh hoặc số đo cho báo cáo. Cổng kiểm khớp còn sai lệch Mahalanobis trên CPU.
 
 Để dùng riêng mô hình giả lập cho các bài kiểm tra cũ, đặt biến môi trường
 `CATBREED_MODEL=mock` trước khi khởi động API. Mặc định là `real`; nếu checkpoint
@@ -61,14 +66,24 @@ Nếu chưa cài dependencies của API, chạy thêm lệnh sau tại thư mụ
 
 Mở **hai cửa sổ PowerShell** tại thư mục gốc của project.
 
-**Cửa sổ 1 – khởi động API FastAPI:**
+**Cửa sổ 1 – nối API GPU official v2 trên tài khoản `thanhkhoi`:**
+
+API đã được kiểm trên RTX A6000 của máy `thanhkhoi`. SSH dùng cổng 22789 và
+thư mục chạy riêng trong `/mnt/thanhkhoi`; không chạy GPU trên Windows.
 
 ```powershell
-.\.venv\Scripts\python.exe -m uvicorn app.api.main:app --port 8000 --reload
+.\scripts\connect_thanhkhoi_web.ps1
 ```
 
-Đợi terminal hiện `Application startup complete` và tiếp tục để cửa sổ này
-chạy. Lần đầu nạp checkpoint có thể mất một lúc. Mở
+Giữ cửa sổ SSH mở để chuyển tiếp cổng `8000` tới API remote. Cần có quyền SSH
+vào `thanhkhoi@113.171.83.34:22789`; không nhập mật khẩu hoặc token trong chat.
+Kết quả đo và 5 ca minh chứng của máy này nằm trong
+`outputs/official_v2/thanhkhoi/module_review/`. Bằng chứng đã lưu Git nằm trong
+`docs/evidence/official_v2/`. Cách chạy GPU Windows cũ nằm trong
+`scripts/start_official_api.ps1` chỉ để đối chiếu lịch sử.
+
+Đợi terminal báo chuyển tiếp cổng và tiếp tục để cửa sổ này
+chạy. Mở
 http://127.0.0.1:8000/health để kiểm tra: phản hồi có `"status": "ok"` và
 `"is_mock": false` khi đang dùng mô hình thật. Tài liệu API tương tác ở
 http://127.0.0.1:8000/docs.
@@ -97,7 +112,7 @@ Nhấn `Ctrl+C` trong từng cửa sổ PowerShell để dừng dịch vụ tư�
    Nếu chưa, chạy lại lệnh API ở trên từ thư mục gốc của project.
 2. Mở http://127.0.0.1:8000/health. Nếu không truy cập được, xem lỗi trong
    terminal API; kiểm tra đã cài dependencies và có file
-   `model_package/weights.pth`.
+   đầy đủ bộ file mới trong `model_package/`.
 3. Mở giao diện qua http://127.0.0.1:5000 và nhấn **Ctrl+F5** để tải lại
    JavaScript mới, sau đó thử phân tích ảnh. Giao diện và API phải được truy
    cập trên cùng máy vì `127.0.0.1` chỉ máy đang mở trình duyệt.
