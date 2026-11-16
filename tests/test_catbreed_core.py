@@ -32,7 +32,7 @@ def checkpoint_for(name):
         "model_name": name,
         "state_dict": model.state_dict(),
         "class_mapping": CLASS_TO_IDX,
-        "config": {"dropout": 0.3, "head_hidden": 0, "baseline_batchnorm": False},
+        "config": {"dropout": 0.3, "head_hidden": 0, "baseline_batchnorm": False, "profile": "official"},
     }
 
 
@@ -125,3 +125,17 @@ def test_decide_prefers_locked_method():
     )
     result = decide(pkg, {"MSP": np.array([0.1]), "KNN": np.array([-0.5])}, np.zeros((1, 12)), method="MSP")
     assert result["method"] == "KNN" and result["accepted"] is True
+
+
+# 5. Cờ smoke và exif=True với đường dẫn
+def test_smoke_flag_and_exif_path(tmp_path):
+    write_package(tmp_path / "pkg")
+    pkg = load_package(tmp_path / "pkg")
+    assert pkg.is_smoke_test is False
+    from PIL import Image
+
+    path = tmp_path / "rgba.png"
+    Image.new("RGBA", (300, 260), (10, 200, 30, 0)).save(path)
+    a = predict_arrays(pkg, path, exif=True)
+    b = predict_arrays(pkg, path, exif=False)
+    assert np.allclose(a[0], b[0])
