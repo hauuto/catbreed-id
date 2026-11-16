@@ -1,0 +1,5 @@
+﻿Tập,Số ảnh,Lỗi đọc,Định dạng JPEG,Định dạng PNG,Màu RGB,Màu RGBA,Có cờ xoay EXIF (≠ 1),Cờ xoay EXIF (%)
+Mèo trainval (ID),1188,0,1185,3,1186,2,2,0.17
+Chó trainval,2492,0,2492,0,2492,0,0,0.0
+DTD,5640,0,5640,0,5640,0,0,0.0
+FeliBreed,94,0,94,0,94,0,0,0.0
