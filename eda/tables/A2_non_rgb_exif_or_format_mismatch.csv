@@ -1,0 +1,6 @@
+﻿dataset,image_id,format,mode,exif_orientation,width,height
+Mèo trainval (ID),Egyptian_Mau_10,JPEG,RGB,0,600,715
+Mèo trainval (ID),Abyssinian_17,JPEG,RGB,0,275,411
+Mèo trainval (ID),Egyptian_Mau_14,PNG,RGBA,1,582,800
+Mèo trainval (ID),Egyptian_Mau_156,PNG,RGB,1,400,265
+Mèo trainval (ID),Egyptian_Mau_186,PNG,RGBA,1,183,275
