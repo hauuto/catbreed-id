@@ -1,0 +1,178 @@
+{
+  "codes": {
+    "mandatory_20": 0,
+    "all_validation": 1,
+    "benchmark": 0
+  },
+  "health": {
+    "status": "ok",
+    "api_version": "1.0",
+    "is_mock": false,
+    "num_classes": 12,
+    "classes": [
+      "Abyssinian",
+      "Bengal",
+      "Birman",
+      "Bombay",
+      "British Shorthair",
+      "Egyptian Mau",
+      "Maine Coon",
+      "Persian",
+      "Ragdoll",
+      "Russian Blue",
+      "Siamese",
+      "Sphynx"
+    ]
+  },
+  "cases": [
+    {
+      "kind": "id_correct",
+      "image": "inputs/cases/id_correct.jpg",
+      "truth": "Abyssinian",
+      "source": "Oxford ID validation",
+      "source_verification": "existing validated manifest",
+      "sha256": "7bc6ed80b30a7e046ac27409e72b652b2475155840624ae418fcbe686cfb9b26",
+      "status": "accepted",
+      "top_label": "Abyssinian",
+      "model": {
+        "backbone": "efficientnet_b0",
+        "mode": "frozen",
+        "seed": 42,
+        "checkpoint_id": "20261116_060136_efficientnet_b0_s42_b8c9dba0",
+        "model_name": "efficientnet_b0",
+        "stage": "frozen",
+        "run_id": "20261116_060136_efficientnet_b0_s42_b8c9dba0",
+        "checkpoint_sha256": "985e40d4036ae06845503687f77e976cb734dea63801c928ca970081b081d660",
+        "rejection_method": "KNN",
+        "threshold": -1.0221926071848497,
+        "temperature": 0.6049425684624492,
+        "precision": "float32",
+        "device": "cuda",
+        "exif_transpose": true
+      }
+    },
+    {
+      "kind": "id_error",
+      "image": "inputs/cases/id_error.jpg",
+      "truth": "Abyssinian",
+      "source": "Oxford ID validation",
+      "source_verification": "existing validated manifest",
+      "sha256": "cafd1c4b626a44c43e5223673d7602f5c3839600670590a9bd8bbb994d4cc148",
+      "status": "accepted",
+      "top_label": "Maine Coon",
+      "model": {
+        "backbone": "efficientnet_b0",
+        "mode": "frozen",
+        "seed": 42,
+        "checkpoint_id": "20261116_060136_efficientnet_b0_s42_b8c9dba0",
+        "model_name": "efficientnet_b0",
+        "stage": "frozen",
+        "run_id": "20261116_060136_efficientnet_b0_s42_b8c9dba0",
+        "checkpoint_sha256": "985e40d4036ae06845503687f77e976cb734dea63801c928ca970081b081d660",
+        "rejection_method": "KNN",
+        "threshold": -1.0221926071848497,
+        "temperature": 0.6049425684624492,
+        "precision": "float32",
+        "device": "cuda",
+        "exif_transpose": true
+      }
+    },
+    {
+      "kind": "dog",
+      "image": "inputs/cases/dog.jpg",
+      "truth": "american_bulldog",
+      "source": "Oxford-IIIT Pet trainval species=dog",
+      "source_verification": "existing validated manifest",
+      "sha256": "cc92335db2498e8bcc378581e6a3d63201d850d9a4ff3099263b33884b66a5f7",
+      "status": "rejected",
+      "top_label": null,
+      "model": {
+        "backbone": "efficientnet_b0",
+        "mode": "frozen",
+        "seed": 42,
+        "checkpoint_id": "20261116_060136_efficientnet_b0_s42_b8c9dba0",
+        "model_name": "efficientnet_b0",
+        "stage": "frozen",
+        "run_id": "20261116_060136_efficientnet_b0_s42_b8c9dba0",
+        "checkpoint_sha256": "985e40d4036ae06845503687f77e976cb734dea63801c928ca970081b081d660",
+        "rejection_method": "KNN",
+        "threshold": -1.0221926071848497,
+        "temperature": 0.6049425684624492,
+        "precision": "float32",
+        "device": "cuda",
+        "exif_transpose": true
+      }
+    },
+    {
+      "kind": "dtd",
+      "name": "dtd_val_sample.jpg",
+      "truth": "banded",
+      "source": "https://www.robots.ox.ac.uk/~vgg/data/dtd/",
+      "source_verification": "User reports torchvision DTD val1[0]; official val1 first ID is banded/banded_0006.jpg",
+      "dataset_image_id": "banded/banded_0006.jpg",
+      "split": "val1",
+      "image": "inputs/cases/dtd_val_sample.jpg",
+      "sha256": "34c3c6c85b4fd5851b4ce4202353fda2ec2767b87cf10a8bad2acb21c7924e4b",
+      "status": "rejected",
+      "top_label": null,
+      "model": {
+        "backbone": "efficientnet_b0",
+        "mode": "frozen",
+        "seed": 42,
+        "checkpoint_id": "20261116_060136_efficientnet_b0_s42_b8c9dba0",
+        "model_name": "efficientnet_b0",
+        "stage": "frozen",
+        "run_id": "20261116_060136_efficientnet_b0_s42_b8c9dba0",
+        "checkpoint_sha256": "985e40d4036ae06845503687f77e976cb734dea63801c928ca970081b081d660",
+        "rejection_method": "KNN",
+        "threshold": -1.0221926071848497,
+        "temperature": 0.6049425684624492,
+        "precision": "float32",
+        "device": "cuda",
+        "exif_transpose": true
+      }
+    },
+    {
+      "kind": "felibreed",
+      "name": "felibreed.jpg",
+      "truth": "Local",
+      "source": "https://data.mendeley.com/datasets/ng6tv57j5c/2",
+      "source_verification": "User confirms FeliBreed Local folder; original dataset filename not supplied",
+      "dataset_image_id": null,
+      "split": null,
+      "image": "inputs/cases/felibreed.jpg",
+      "sha256": "c88f6960c2293c4c53c51579802999a45a72cd9882cc68bd0e6c3080a9d15d67",
+      "status": "accepted",
+      "top_label": "Ragdoll",
+      "model": {
+        "backbone": "efficientnet_b0",
+        "mode": "frozen",
+        "seed": 42,
+        "checkpoint_id": "20261116_060136_efficientnet_b0_s42_b8c9dba0",
+        "model_name": "efficientnet_b0",
+        "stage": "frozen",
+        "run_id": "20261116_060136_efficientnet_b0_s42_b8c9dba0",
+        "checkpoint_sha256": "985e40d4036ae06845503687f77e976cb734dea63801c928ca970081b081d660",
+        "rejection_method": "KNN",
+        "threshold": -1.0221926071848497,
+        "temperature": 0.6049425684624492,
+        "precision": "float32",
+        "device": "cuda",
+        "exif_transpose": true
+      }
+    }
+  ],
+  "code_sha256": {
+    "app/api/real_model.py": "418056d5fb1b7de4f78274c6e030ab47dffc03a0428a89a38a1023aabbc9b7df",
+    "src/catbreed_core/__init__.py": "a87bf928f5ac581e73dfc65667e78d6e1326cefe5b0e82eb486fed2407299447",
+    "src/catbreed_core/preprocess.py": "bc088cd16470be431d9c2db8801aa704d8b166559c8fb42c56daf2793e2f1061",
+    "src/catbreed_core/scores.py": "97629df5187fb14b4f52f1d64f4e64e26eb91ccbdaa3165b434bd897abc9087e",
+    "src/catbreed_core/model.py": "84e0d4d810a78a13693615db62439359b7b44749e0528649a4504e2603c0018a",
+    "src/catbreed_core/package.py": "4a86e7c9b17aac0bbd37d94b42d147f324aa785dc16108d237735637eb41c55a"
+  },
+  "chapter5_ready": false,
+  "pending": [
+    "Human browser screenshots",
+    "Document two Mahalanobis failures and source verification limits"
+  ]
+}

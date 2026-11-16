@@ -48,6 +48,7 @@ class DeploymentClassifier(BaseCatClassifier):
         exif_transpose: bool = True,
         precision: str = "float32",
         device: str = "cpu",
+        method: str | None = None,
     ):
         if precision not in ("float32", "float64"):
             raise ValueError("precision phải là float32 hoặc float64")
@@ -104,12 +105,15 @@ class DeploymentClassifier(BaseCatClassifier):
             method: float(self.package.thresholds["T1"][method]) for method in METHODS
         }
         self.temperature = float(self.package.calibration["temperature"])
-        self.method = rejection.get("method")
+        # Official deployments are governed by locked_selection.json. Trial
+        # packages may select a method explicitly when no lock is present.
+        self.method = rejection.get("method") if self.package.locked_selection else method
         if self.method not in METHODS:
-            raise ValueError("Phương pháp từ chối không hợp lệ trong locked_selection.json")
+            source = "locked_selection.json" if self.package.locked_selection else "method"
+            raise ValueError(f"Phương pháp từ chối không hợp lệ trong {source}")
         if not np.isclose(
             self.thresholds[self.method],
-            float(rejection["threshold"]),
+            float(rejection.get("threshold", self.thresholds[self.method])),
             rtol=0,
             atol=1e-12,
         ):
@@ -199,7 +203,7 @@ class DeploymentClassifier(BaseCatClassifier):
         explained = time.perf_counter()
 
         # Use the shared module's raw output and scores; Grad-CAM is only explanatory.
-        decision = decide(self.package, scores, logits)
+        decision = decide(self.package, scores, logits, method=self.method)
         ood_all = [
             {
                 "method": method,

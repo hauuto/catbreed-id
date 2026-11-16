@@ -168,9 +168,19 @@ function render(r) {
   const rawScores = Array.isArray(r.ood_all) && !r.is_mock ? r.ood_all : [];
   const rawScoresHtml = rawScores.length
     ? `
-    <table class="ood-score-table"><thead><tr><th>Phương pháp</th><th>Điểm</th></tr></thead><tbody>
-      ${rawScores.map((m) => `<tr><td>${esc(m.method)}</td><td>${Number.isFinite(Number(m.score)) ? esc(fmt(m.score, 4)) : "—"}</td></tr>`).join("")}
+    <table class="ood-score-table"><thead><tr><th>Phương pháp</th><th>Điểm</th><th>Ngưỡng τ</th></tr></thead><tbody>
+      ${rawScores.map((m) => `<tr><td>${esc(m.method)}</td><td>${Number.isFinite(Number(m.score)) ? esc(fmt(m.score, 4)) : "—"}</td><td>${Number.isFinite(Number(m.threshold)) && m.threshold != null ? esc(fmt(m.threshold, 4)) : "—"}</td></tr>`).join("")}
     </tbody></table>`
+    : "";
+  const model = r.model || {};
+  const advancedHtml = rawScores.length
+    ? `<details class="model-details"><summary>Chi tiết mô hình và 5 điểm từ chối</summary>
+        ${rawScoresHtml}
+        <dl><dt>Mô hình / giai đoạn / seed</dt><dd>${esc(model.model_name || model.backbone)} / ${esc(model.stage || model.mode)} / ${esc(model.seed ?? "—")}</dd>
+        <dt>Nhiệt độ hiệu chỉnh xác suất (T)</dt><dd>${esc(model.temperature ?? "—")}</dd>
+        <dt>Thiết bị / độ chính xác tính toán</dt><dd>${esc(model.device || "cpu")} / ${esc(model.precision || "float32")}</dd>
+        <dt>Lượt huấn luyện</dt><dd>${esc(model.run_id || model.checkpoint_id)}</dd>
+        <dt>SHA-256 checkpoint</dt><dd class="checkpoint-digest">${esc(model.checkpoint_sha256 || "—")}</dd></dl></details>`
     : "";
   const trustCardHtml =
     unverified || !bestOod
@@ -219,6 +229,7 @@ function render(r) {
                     : "Điểm của phương pháp chính thấp hơn ngưỡng chấp nhận đã cấu hình."
                 }
             </p>
+            ${advancedHtml}
         </div>
     `;
 
@@ -292,7 +303,7 @@ function render(r) {
   });
 
   // Các khả năng khác: ok bỏ giống đứng đầu, từ chối hiện cả giống gần nhất
-  const others = isOk ? r.top5.slice(1, 5) : r.top5.slice(0, 4);
+  const others = isOk ? r.top5.slice(1, 5) : r.top5.slice(0, 5);
   if ($("tips")) $("tips").hidden = isOk;
   const hasHeatmap =
     typeof r.heatmap === "string" &&

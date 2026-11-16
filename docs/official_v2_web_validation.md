@@ -1,5 +1,15 @@
 # Kiểm tra web official v2 — 16/11/2026
 
+**Trạng thái nghiệm thu cuối:** adapter gói thử đã truyền method tường minh vào decide; 15 test hồi quy đạt không skip, cả gói 13/11 và official v2 đạt 20/20 qua adapter, 10 ca predict đầy đủ đạt hợp đồng. Bộ ảnh đã đủ và Word/PDF được cập nhật theo kết quả này. Bản sao bằng chứng để lưu Git nằm trong `docs/evidence/official_v2/`. Các ghi chú chờ test, chờ ảnh hoặc thiếu tham chiếu bên dưới chỉ mô tả lịch sử trước nghiệm thu cuối.
+
+## Kiểm thử gói thử 13/11
+
+- Gói thử có checkpoint SHA-256 `d90bca482b4367579a70b3158ad62e331644cbc9731229a39b4c15233bfbe052`; các file `val.npz` và `validation_scores.csv` trong hai thư mục `fbf86953` và `d90bca48` có cùng SHA-256.
+- Gói không có `locked_selection.json` được nạp qua adapter với `method="KNN"` và `exif=False`; 20/20 ảnh đạt logits cùng đủ năm điểm OOD.
+- Bằng chứng: [CSV](../outputs/trial_d90bca48/trial_d90bca48_20_exif_false.csv) và [tóm tắt](../outputs/trial_d90bca48/trial_d90bca48_20_exif_false.summary.json). Đây là kiểm thử adapter, không dùng số liệu gói thử cho báo cáo official v2.
+
+**Cập nhật nghiệm thu core và gói 13/11:** đã có merge d649df4; đã chạy bộ test core bằng nguồn tham chiếu cục bộ: 11 passed, không skip; kiểm khớp gói 13/11 đạt 20/20 trên thanhkhoi. Xem [biên bản và đường dẫn log](ket_qua_nghiem_thu_core_1311.md). Các ghi chú thiếu file/gói 13/11 ở dưới là lịch sử trước khi người dùng cung cấp hai thư mục theo SHA. Chưa cập nhật hồi tố báo cáo Word/PDF cũ.
+
 **Cập nhật sau xác minh ảnh:** đã xem đủ 10 ảnh màn hình của 5 ca trong `outputs/official_v2/screenshots/module_review/`, tất cả đạt nội dung cần chụp. Xem [biên bản kiểm ảnh và việc còn lại](kiem_tra_anh_minh_chung.md). Bộ ảnh đã đủ để viết Chương 5; các ghi chú chờ ảnh và cờ `chapter5_ready=false` của phiên đo bên dưới là trạng thái lịch sử, không phải yêu cầu chụp thêm. Báo cáo cuối vẫn cần hoàn thiện và kiểm bản xuất.
 
 ## Gói triển khai

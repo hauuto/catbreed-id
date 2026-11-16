@@ -147,5 +147,5 @@ def decide(pkg, scores, logits, method=None):
         "score": score,
         "accepted": bool(score >= tau),
         "probs": probs,
-        "top_class": next(name.replace("_", " ") for name, index in pkg.saved["class_mapping"].items() if index == int(probs.argmax())),
+        "top_class": next(name.replace("_", " ") for name, index in pkg.saved["class_mapping"].items() if index == int(probs.argmax())) if hasattr(pkg, "saved") else CAT_BREEDS[int(probs.argmax())],
     }

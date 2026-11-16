@@ -1,0 +1,21 @@
+{
+  "run_id": "20261113_145326_efficientnet_b0_s42_df1edde1",
+  "checkpoint_sha256": "d90bca482b4367579a70b3158ad62e331644cbc9731229a39b4c15233bfbe052",
+  "device": "cuda",
+  "precision": "float32",
+  "torch": "2.15.0+cu132",
+  "torchvision": "0.29.2+cu132",
+  "exif_transpose": false,
+  "n": 20,
+  "passed": 20,
+  "criteria": "logits and scores abs < 1e-4; Mahalanobis also permits relative < 1e-6 (OR, not added)",
+  "max_logits_abs": 3.337860107421875e-06,
+  "max_scores_abs": {
+    "MSP": 4.4083305350550717e-07,
+    "MaxLogit": 1.6689300537109375e-06,
+    "Energy": 1.130111191516292e-06,
+    "Mahalanobis": 0.0014752741471966146,
+    "KNN": 1.5988273471823078e-07
+  },
+  "failures": []
+}

@@ -1,0 +1,34 @@
+{
+  "run_id": "20261116_060136_efficientnet_b0_s42_b8c9dba0",
+  "checkpoint_sha256": "985e40d4036ae06845503687f77e976cb734dea63801c928ca970081b081d660",
+  "device": "cuda",
+  "precision": "float32",
+  "torch": "2.15.0+cu132",
+  "torchvision": "0.29.2+cu132",
+  "exif_transpose": false,
+  "n": 238,
+  "passed": 236,
+  "criteria": "logits and scores abs < 1e-4; Mahalanobis also permits relative < 1e-6 (OR, not added)",
+  "max_logits_abs": 6.4373016357421875e-06,
+  "max_scores_abs": {
+    "MSP": 7.321087742706567e-07,
+    "MaxLogit": 5.0067901611328125e-06,
+    "Energy": 4.404071039409985e-06,
+    "Mahalanobis": 0.00349042880043271,
+    "KNN": 5.585759803583557e-07
+  },
+  "failures": [
+    {
+      "image_id": "Bengal_143",
+      "methods": [
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Siamese_167",
+      "methods": [
+        "Mahalanobis"
+      ]
+    }
+  ]
+}
