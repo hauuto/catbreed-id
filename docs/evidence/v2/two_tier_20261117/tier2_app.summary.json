@@ -1,0 +1,41 @@
+{
+  "purpose": "tier2_serving_mode_effect_report_only",
+  "n": 238,
+  "tau": -1.1167204244629498,
+  "logits_abs_max": 0.01070261001586914,
+  "logits_abs_median": 0.0019298791885375977,
+  "logits_per_image_max_abs_median": 0.004977703094482422,
+  "logits_median_definition": "median over all 238x12 absolute logit differences; also report median of per-image maxima",
+  "knn_abs_max": 0.00047434395949952357,
+  "knn_abs_median": 8.630545822463365e-05,
+  "top1_changed": 0,
+  "top1_changed_ids": [],
+  "knn_decision_changed": 1,
+  "knn_decision_changed_ids": [
+    "Bombay_162"
+  ],
+  "min_notebook_knn_margin": 0.00010954112248473535,
+  "min_notebook_knn_margin_id": "Bombay_162",
+  "min_app_knn_margin": 6.030191209926983e-06,
+  "min_app_knn_margin_id": "Bombay_162",
+  "images_with_error_ge_notebook_margin": 1,
+  "run_id": "20261117_021310_efficientnet_b0_s42_8b69c4e9",
+  "checkpoint_sha256": "6cc4bf72641b696b6765ef73a6f772cb65d5b28340088bf44e3b4ebdaf7bd586",
+  "temperature": 0.7957721604899282,
+  "device": "cuda",
+  "batch_size": 1,
+  "cudnn_tf32": false,
+  "matmul_tf32": false,
+  "precision": "float32",
+  "exif_transpose": true,
+  "hostname": "megalab-HP-Z8-G4-Workstation",
+  "gpu": "NVIDIA RTX A6000",
+  "torch": "2.15.0+cu132",
+  "torchvision": "0.29.2+cu132",
+  "python": "3.13.18",
+  "reference_sha256": {
+    "checkpoint.pt": "6cc4bf72641b696b6765ef73a6f772cb65d5b28340088bf44e3b4ebdaf7bd586",
+    "val.npz": "a62be1d85898cb6b30eb06e662394b7d42e8678364948ea0a90a4a011009375c",
+    "validation_scores.csv": "723a87d502edd3a6d052f3d093eeb9914b07acead7cbffe101cd863c57adce3e"
+  }
+}
