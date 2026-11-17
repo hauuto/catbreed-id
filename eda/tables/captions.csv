@@ -36,3 +36,6 @@ Bảng,Bảng 3.18,C4_breed_deviation_iqr,"Độ lệch trung vị của từng 
 Bảng,Bảng 3.19,C4_median_stats_by_dataset,Trung vị các thống kê ảnh theo tập dữ liệu
 Bảng,Bảng 3.20,C5_manual_review_counts,Kết quả duyệt bằng mắt 30 ảnh mỗi giống
 Bảng,Bảng 3.21,C6_ood_similarity_image_stats,Mức giống mèo ID của từng tập OOD theo thống kê ảnh (KS D)
+Bảng,Bảng 3.22,D1_breed_counts_train_val_test,"Số ảnh mỗi giống mèo trong train, validation và test"
+Bảng,Bảng 3.23,D2_near_duplicate_counts_test,Số cặp trùng và gần trùng liên quan tới Oxford test
+Bảng,Bảng 3.24,D3_test_quality_and_size,Chất lượng và kích thước ảnh Oxford test
