@@ -8,8 +8,10 @@ import sys
 from functools import cmp_to_key
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 from scipy.stats import kendalltau
+from sklearn.metrics import f1_score
 
 
 FORBIDDEN_INPUT_TOKENS = ("test", "near_ood", "far_ood", "unseen")
@@ -268,10 +270,96 @@ def print_summary(ranking: pd.DataFrame, n_val: int) -> None:
         print(f"{model}: khoảng cách F1 hạng 1–2 = {gap:.6f}{note}")
 
 
-def run(inputs: list[Path], output_dir: Path, n_val: int | None, calibration: Path | None) -> None:
+CROSS_CHECK_TOLERANCE = 1e-9
+N_CLASSES = 12
+
+
+def validation_metrics(npz_path: Path, exclude: set[str]) -> tuple[float, float]:
+    """Accuracy và F1 macro từ val.npz, bỏ các image_id trong exclude; cùng công thức với notebook."""
+    reject_forbidden_path(npz_path)
+    if npz_path.name != "val.npz":
+        raise ValueError(f"Chỉ đọc val.npz: {npz_path}")
+    if not npz_path.exists():
+        raise FileNotFoundError(f"Không thấy {npz_path}")
+    with np.load(npz_path, allow_pickle=False) as data:
+        logits, labels, image_ids = data["logits"], data["labels"], data["image_id"].astype(str)
+    missing = sorted(exclude - set(image_ids))
+    if missing:
+        raise ValueError(f"image_id không có trong {npz_path}: {missing}")
+    keep = ~np.isin(image_ids, sorted(exclude))
+    predictions = logits[keep].argmax(1)
+    labels = labels[keep]
+    accuracy = float(np.mean(labels == predictions))
+    macro_f1 = float(f1_score(labels, predictions, labels=range(N_CLASSES), average="macro", zero_division=0))
+    return accuracy, macro_f1
+
+
+def exclude_val_sensitivity(ranking: pd.DataFrame, runs_root: Path, exclude: list[str]) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Phân tích độ nhạy: tính lại F1/accuracy validation khi bỏ một số ảnh, xếp hạng lại trong từng mô hình.
+
+    Mỗi dòng của bảng xếp hạng giữ nguyên checkpoint (stage) đã chọn; chỉ chỉ số validation được tính lại.
+    Không đổi quy tắc chọn chính thức.
+    """
+    excluded = set(exclude)
+    if not excluded:
+        raise ValueError("--exclude-val cần ít nhất một image_id")
+    rows = []
+    for record in ranking.to_dict("records"):
+        path = runs_root / str(record["stage_dir"]) / "val.npz"
+        acc_full, f1_full = validation_metrics(path, set())
+        for name, recomputed, recorded in [("val_accuracy", acc_full, record["val_accuracy"]),
+                                           ("val_macro_f1", f1_full, record["val_macro_f1"])]:
+            if abs(recomputed - float(recorded)) >= CROSS_CHECK_TOLERANCE:
+                raise ValueError(
+                    f"Kiểm chéo thất bại ({record['model']}, {record['sweep_point']}): {name} tính lại {recomputed!r} "
+                    f"≠ sweep_results.csv {recorded!r}"
+                )
+        acc_excluded, f1_excluded = validation_metrics(path, excluded)
+        rows.append({
+            "model": record["model"], "sweep_point": record["sweep_point"], "stage": record["stage"],
+            "rank_full": int(record["rank"]), "f1_full": f1_full, "f1_excluded": f1_excluded,
+            "acc_full": acc_full, "acc_excluded": acc_excluded, "best_epoch": record["best_epoch"],
+        })
+    table = pd.DataFrame(rows)
+    table["rank_excluded"] = 0
+    summary = []
+    for model, group in table.groupby("model", sort=False):
+        candidates = [
+            {"index": index, "val_macro_f1": row.f1_excluded, "val_accuracy": row.acc_excluded, "best_epoch": row.best_epoch}
+            for index, row in group.iterrows()
+        ]
+        for rank, candidate in enumerate(sorted(candidates, key=cmp_to_key(compare_records)), start=1):
+            table.loc[candidate["index"], "rank_excluded"] = rank
+        group = table.loc[group.index]
+        tau = kendalltau(group.rank_full, group.rank_excluded)[0] if len(group) > 1 else float("nan")
+        top_full = group.loc[group.rank_full == 1, "sweep_point"].iloc[0]
+        top_excluded = group.loc[group.rank_excluded == 1, "sweep_point"].iloc[0]
+        summary.append({"model": model, "n_points": len(group), "kendall_tau": tau, "top1_full": top_full,
+                        "top1_excluded": top_excluded, "top1_preserved": top_full == top_excluded})
+    columns = ["model", "sweep_point", "stage", "rank_full", "rank_excluded", "f1_full", "f1_excluded", "acc_full", "acc_excluded"]
+    return table.sort_values(["model", "rank_full"], kind="stable")[columns].reset_index(drop=True), pd.DataFrame(summary)
+
+
+def run(
+    inputs: list[Path],
+    output_dir: Path,
+    n_val: int | None,
+    calibration: Path | None,
+    exclude_val: list[str] | None = None,
+    runs_root: Path | None = None,
+) -> None:
     merged = read_sweep_files(inputs)
     count = validation_count(n_val, calibration)
     ranking, top, best_factor, sensitivity = build_outputs(merged, count)
+    if exclude_val is not None:
+        if runs_root is None:
+            raise ValueError("--exclude-val cần --runs-root")
+        table, summary = exclude_val_sensitivity(ranking, runs_root, exclude_val)
+        output_dir.mkdir(parents=True, exist_ok=True)
+        table.to_csv(output_dir / "stage1_exclude_val.csv", index=False)
+        summary.to_csv(output_dir / "stage1_exclude_val_summary.csv", index=False)
+        print(f"Độ nhạy khi bỏ {len(set(exclude_val))} ảnh validation: {', '.join(sorted(set(exclude_val)))}")
+        print(summary.to_string(index=False))
     output_dir.mkdir(parents=True, exist_ok=True)
     ranking[RANKING_COLUMNS + ["accuracy_resolution", "top12_accuracy_indistinguishable"]].to_csv(
         output_dir / "stage1_ranking.csv", index=False
@@ -292,8 +380,14 @@ def main() -> None:
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--n-val", type=int)
     parser.add_argument("--calibration", type=Path)
+    parser.add_argument(
+        "--exclude-val",
+        type=lambda text: [item.strip() for item in text.split(",") if item.strip()],
+        help="Phân tích độ nhạy: các image_id validation bỏ ra, phân cách bằng dấu phẩy",
+    )
+    parser.add_argument("--runs-root", type=Path, help="Thư mục chứa các run; ghép với cột stage_dir để tìm val.npz")
     args = parser.parse_args()
-    run(args.inputs, args.output_dir, args.n_val, args.calibration)
+    run(args.inputs, args.output_dir, args.n_val, args.calibration, args.exclude_val, args.runs_root)
 
 
 if __name__ == "__main__":
