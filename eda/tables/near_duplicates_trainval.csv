@@ -1,0 +1,10 @@
+﻿image_a,dataset_a,breed_a,split_a,image_b,dataset_b,breed_b,split_b,hamming,same_sha256
+Abyssinian_11,Mèo trainval (ID),Abyssinian,val,Abyssinian_177,Mèo trainval (ID),Abyssinian,train,0,False
+Bombay_107,Mèo trainval (ID),Bombay,val,Bombay_132,Mèo trainval (ID),Bombay,train,0,False
+Bombay_107,Mèo trainval (ID),Bombay,val,Bombay_19,Mèo trainval (ID),Bombay,train,0,False
+Bombay_113,Mèo trainval (ID),Bombay,train,Bombay_157,Mèo trainval (ID),Bombay,train,0,False
+Bombay_132,Mèo trainval (ID),Bombay,train,Bombay_19,Mèo trainval (ID),Bombay,train,0,False
+Bombay_136,Mèo trainval (ID),Bombay,val,Bombay_150,Mèo trainval (ID),Bombay,val,0,False
+Abyssinian_122,Mèo trainval (ID),Abyssinian,train,Abyssinian_172,Mèo trainval (ID),Abyssinian,val,2,False
+Bombay_114,Mèo trainval (ID),Bombay,train,Bombay_139,Mèo trainval (ID),Bombay,train,2,False
+Ragdoll_160,Mèo trainval (ID),Ragdoll,train,Ragdoll_161,Mèo trainval (ID),Ragdoll,train,6,False

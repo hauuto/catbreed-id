@@ -1,0 +1,5 @@
+﻿Tập,Số ảnh,Cạnh ngắn: trung vị,Tỷ lệ khung: trung vị,Độ sáng: trung vị,Độ tương phản: trung vị,Độ nét (log10): trung vị,Độ bão hòa: trung vị,Cạnh ngắn: KS D với ID,Tỷ lệ khung: KS D với ID,Độ sáng: KS D với ID,Độ tương phản: KS D với ID,Độ nét (log10): KS D với ID,Độ bão hòa: KS D với ID,KS D trung bình (6 thống kê),Có con vật,Cùng nguồn ảnh với ID
+Mèo trainval (ID),1188,334.0,1.33,115.72,56.33,2.49,68.29,,,,,,,,mèo,có
+Chó trainval,2492,335.0,1.33,114.38,55.83,2.67,68.93,0.063,0.052,0.062,0.047,0.2,0.065,0.082,chó,có (Oxford)
+DTD,5640,425.0,1.07,122.8,40.3,2.89,70.64,0.47,0.275,0.115,0.386,0.371,0.134,0.292,không,không
+FeliBreed,94,3060.0,1.04,101.4,60.29,2.48,87.71,0.994,0.272,0.396,0.333,0.185,0.453,0.439,mèo,không

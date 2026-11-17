@@ -108,14 +108,15 @@ def test_load_package_rejects_wrong_sha(tmp_path):
 @pytest.mark.parametrize("score, accepted", [(0.5, True), (0.6, True), (0.4, False)])
 def test_decide_threshold(score, accepted):
     pkg = SimpleNamespace(
-        locked_selection={}, thresholds={"T1": {"MSP": 0.5}}, calibration={"temperature": 2.0}
+        locked_selection={}, thresholds={"T1": {"MSP": 0.5}}, calibration={"temperature": 2.0},
+        saved={"class_mapping": {name: index for index, name in enumerate(CAT_BREEDS)}},
     )
     logits = np.zeros((1, 12))
     logits[0, 3] = 4.0
     result = decide(pkg, {"MSP": np.array([score])}, logits, method="MSP")
     assert result["accepted"] is accepted
     assert result["tau"] == 0.5
-    assert result["top_class"] == CAT_BREEDS[3]
+    assert result["top_class"] == CAT_BREEDS[3].replace("_", " ")
     assert abs(result["probs"].sum() - 1.0) < 1e-12
 
 
@@ -124,6 +125,7 @@ def test_decide_prefers_locked_method():
         locked_selection={"rejection": {"method": "KNN"}},
         thresholds={"T1": {"MSP": 0.5, "KNN": -1.0}},
         calibration={"temperature": 1.0},
+        saved={"class_mapping": {name: index for index, name in enumerate(CAT_BREEDS)}},
     )
     result = decide(pkg, {"MSP": np.array([0.1]), "KNN": np.array([-0.5])}, np.zeros((1, 12)), method="MSP")
     assert result["method"] == "KNN" and result["accepted"] is True

@@ -1,0 +1,5 @@
+﻿image_a,dataset_a,breed_a,split_a,image_b,dataset_b,breed_b,split_b,hamming,same_sha256,scope
+FeliBreed/Local/36.jpg,FeliBreed,Local,unseen_cat,FeliBreed/Local/47.jpg,FeliBreed,Local,unseen_cat,6,False,FeliBreed nội bộ
+FeliBreed/Local/38.jpg,FeliBreed,Local,unseen_cat,FeliBreed/Local/43.jpg,FeliBreed,Local,unseen_cat,6,False,FeliBreed nội bộ
+FeliBreed/Local/41.jpg,FeliBreed,Local,unseen_cat,FeliBreed/Local/52.jpg,FeliBreed,Local,unseen_cat,8,False,FeliBreed nội bộ
+FeliBreed/Local/57.jpg,FeliBreed,Local,unseen_cat,FeliBreed/Local/60.jpg,FeliBreed,Local,unseen_cat,8,False,FeliBreed nội bộ

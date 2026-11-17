@@ -55,8 +55,14 @@ class DistanceScores:
         }
 
     def save(self, path):
-        np.savez_compressed(path, means=self.means, precision=self.precision,
-                            shrinkage=self.shrinkage, bank=self.bank, k=self.k)
+        np.savez_compressed(
+            path,
+            means=self.means,
+            precision=self.precision,
+            shrinkage=self.shrinkage,
+            bank=self.bank,
+            k=self.k,
+        )
 
     @classmethod
     def load(cls, path):
@@ -66,3 +72,7 @@ class DistanceScores:
             distance.precision = stored["precision"]
             distance.shrinkage = float(stored["shrinkage"]) if "shrinkage" in stored else None
             return distance.index(stored["bank"], int(stored["k"]))
+
+
+def rejection_scores(arrays, distance):
+    return {**logit_scores(arrays["logits"]), **distance.score(arrays["features"])}
