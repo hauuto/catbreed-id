@@ -1,0 +1,26 @@
+﻿image_a,dataset_a,breed_a,split_a,image_b,dataset_b,breed_b,split_b,hamming,same_sha256,scope
+Bombay_82,Mèo test,Bombay,test,Bombay_146,Mèo trainval (ID),Bombay,val,0,False,Oxford test – Oxford trainval
+British_Shorthair_271,Mèo test,British_Shorthair,test,British_Shorthair_186,Mèo trainval (ID),British_Shorthair,train,0,False,Oxford test – Oxford trainval
+British_Shorthair_278,Mèo test,British_Shorthair,test,British_Shorthair_160,Mèo trainval (ID),British_Shorthair,train,0,False,Oxford test – Oxford trainval
+Egyptian_Mau_219,Mèo test,Egyptian_Mau,test,Egyptian_Mau_138,Mèo trainval (ID),Egyptian_Mau,train,0,False,Oxford test – Oxford trainval
+Egyptian_Mau_6,Mèo test,Egyptian_Mau,test,Egyptian_Mau_186,Mèo trainval (ID),Egyptian_Mau,train,0,False,Oxford test – Oxford trainval
+german_shorthaired_19,Chó test,german_shorthaired,test,german_shorthaired_179,Chó trainval,german_shorthaired,trainval_khac,0,False,Oxford test – Oxford trainval
+german_shorthaired_20,Chó test,german_shorthaired,test,german_shorthaired_180,Chó trainval,german_shorthaired,probe,0,False,Oxford test – Oxford trainval
+german_shorthaired_3,Chó test,german_shorthaired,test,german_shorthaired_150,Chó trainval,german_shorthaired,trainval_khac,0,False,Oxford test – Oxford trainval
+great_pyrenees_89,Chó test,great_pyrenees,test,great_pyrenees_173,Chó trainval,great_pyrenees,trainval_khac,0,False,Oxford test – Oxford trainval
+japanese_chin_20,Chó test,japanese_chin,test,japanese_chin_176,Chó trainval,japanese_chin,trainval_khac,0,False,Oxford test – Oxford trainval
+japanese_chin_200,Chó test,japanese_chin,test,japanese_chin_187,Chó trainval,japanese_chin,trainval_khac,0,False,Oxford test – Oxford trainval
+japanese_chin_78,Chó test,japanese_chin,test,japanese_chin_188,Chó trainval,japanese_chin,probe,0,False,Oxford test – Oxford trainval
+japanese_chin_81,Chó test,japanese_chin,test,japanese_chin_158,Chó trainval,japanese_chin,trainval_khac,0,False,Oxford test – Oxford trainval
+japanese_chin_85,Chó test,japanese_chin,test,japanese_chin_137,Chó trainval,japanese_chin,trainval_khac,0,False,Oxford test – Oxford trainval
+japanese_chin_88,Chó test,japanese_chin,test,japanese_chin_140,Chó trainval,japanese_chin,trainval_khac,0,False,Oxford test – Oxford trainval
+keeshond_27,Chó test,keeshond,test,keeshond_175,Chó trainval,keeshond,trainval_khac,0,False,Oxford test – Oxford trainval
+keeshond_47,Chó test,keeshond,test,keeshond_141,Chó trainval,keeshond,trainval_khac,0,False,Oxford test – Oxford trainval
+keeshond_97,Chó test,keeshond,test,keeshond_140,Chó trainval,keeshond,trainval_khac,0,False,Oxford test – Oxford trainval
+keeshond_99,Chó test,keeshond,test,keeshond_152,Chó trainval,keeshond,trainval_khac,0,False,Oxford test – Oxford trainval
+leonberger_1,Chó test,leonberger,test,leonberger_187,Chó trainval,leonberger,probe,0,False,Oxford test – Oxford trainval
+leonberger_2,Chó test,leonberger,test,leonberger_189,Chó trainval,leonberger,trainval_khac,0,False,Oxford test – Oxford trainval
+newfoundland_2,Chó test,newfoundland,test,newfoundland_149,Chó trainval,newfoundland,trainval_khac,0,False,Oxford test – Oxford trainval
+Abyssinian_99,Mèo test,Abyssinian,test,Abyssinian_151,Mèo trainval (ID),Abyssinian,train,4,False,Oxford test – Oxford trainval
+newfoundland_2,Chó test,newfoundland,test,newfoundland_172,Chó trainval,newfoundland,trainval_khac,4,False,Oxford test – Oxford trainval
+leonberger_193,Chó test,leonberger,test,english_cocker_spaniel_131,Chó trainval,english_cocker_spaniel,trainval_khac,8,False,Oxford test – Oxford trainval
