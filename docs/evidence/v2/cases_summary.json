@@ -1,0 +1,37 @@
+[
+    {
+        "case":  "id_correct.jpg",
+        "status":  "accepted",
+        "top":  "Abyssinian",
+        "knn":  -0.9979786196168877,
+        "sha":  "6cc4bf72641b696b6765ef73a6f772cb65d5b28340088bf44e3b4ebdaf7bd586"
+    },
+    {
+        "case":  "dog.jpg",
+        "status":  "rejected",
+        "top":  null,
+        "knn":  -1.2155317236738423,
+        "sha":  "6cc4bf72641b696b6765ef73a6f772cb65d5b28340088bf44e3b4ebdaf7bd586"
+    },
+    {
+        "case":  "dtd_val_sample.jpg",
+        "status":  "rejected",
+        "top":  null,
+        "knn":  -1.3661151813690893,
+        "sha":  "6cc4bf72641b696b6765ef73a6f772cb65d5b28340088bf44e3b4ebdaf7bd586"
+    },
+    {
+        "case":  "felibreed.jpg",
+        "status":  "accepted",
+        "top":  "Ragdoll",
+        "knn":  -1.0595768519450652,
+        "sha":  "6cc4bf72641b696b6765ef73a6f772cb65d5b28340088bf44e3b4ebdaf7bd586"
+    },
+    {
+        "case":  "id_error.jpg",
+        "status":  "rejected",
+        "top":  null,
+        "knn":  -1.1172601320405229,
+        "sha":  "6cc4bf72641b696b6765ef73a6f772cb65d5b28340088bf44e3b4ebdaf7bd586"
+    }
+]

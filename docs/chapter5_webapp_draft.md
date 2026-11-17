@@ -1,74 +1,74 @@
-# Nội dung nháp Chương 5 – triển khai CatBreedID
+# Ná»™i dung nhÃ¡p ChÆ°Æ¡ng 5 â€“ triá»ƒn khai CatBreedID
 
-Trạng thái: đã có bộ model, kiểm khớp bắt buộc, 5 ca đầu vào và số đo trên GPU `thanhkhoi`.
-Đã xác minh đủ 10 ảnh chụp trình duyệt; xem `docs/kiem_tra_anh_minh_chung.md`.
-Cần chèn các hình vào báo cáo và kiểm bản xuất cuối; đây vẫn là bản nháp.
+Tráº¡ng thÃ¡i: Ä‘Ã£ cÃ³ bá»™ model, kiá»ƒm khá»›p báº¯t buá»™c, 5 ca Ä‘áº§u vÃ o vÃ  sá»‘ Ä‘o trÃªn GPU `thanhkhoi`.
+ÄÃ£ xÃ¡c minh Ä‘á»§ 10 áº£nh chá»¥p trÃ¬nh duyá»‡t; xem `docs/kiem_tra_anh_minh_chung.md`.
+Cáº§n chÃ¨n cÃ¡c hÃ¬nh vÃ o bÃ¡o cÃ¡o vÃ  kiá»ƒm báº£n xuáº¥t cuá»‘i; Ä‘Ã¢y váº«n lÃ  báº£n nhÃ¡p.
 
-## Mô hình triển khai
+## MÃ´ hÃ¬nh triá»ƒn khai
 
-Ứng dụng gồm giao diện Flask tại cổng 5000 và API FastAPI tại cổng 8000. API nạp EfficientNet-B0
-giai đoạn frozen, seed 42, checkpoint epoch 9 của lượt `20261116_060136_efficientnet_b0_s42_b8c9dba0`.
-Lựa chọn mô hình, phương pháp từ chối và ngưỡng được đọc từ locked_selection.json. SHA-256 của
-checkpoint và các file hiệu chỉnh được kiểm tra trước khi nạp.
+á»¨ng dá»¥ng gá»“m giao diá»‡n Flask táº¡i cá»•ng 5000 vÃ  API FastAPI táº¡i cá»•ng 8000. API náº¡p EfficientNet-B0
+giai Ä‘oáº¡n frozen, seed 42, checkpoint epoch 9 cá»§a lÆ°á»£t `20261116_060136_efficientnet_b0_s42_b8c9dba0`.
+Lá»±a chá»n mÃ´ hÃ¬nh, phÆ°Æ¡ng phÃ¡p tá»« chá»‘i vÃ  ngÆ°á»¡ng Ä‘Æ°á»£c Ä‘á»c tá»« locked_selection.json. SHA-256 cá»§a
+checkpoint vÃ  cÃ¡c file hiá»‡u chá»‰nh Ä‘Æ°á»£c kiá»ƒm tra trÆ°á»›c khi náº¡p.
 
-Ảnh đầu vào được chuyển về RGB; alpha ghép với nền xám 128. Ảnh được resize cạnh ngắn 256,
-crop giữa 224×224 và chuẩn hóa theo ImageNet. Khi dùng web, ảnh được xoay theo EXIF để hỗ trợ
-ảnh điện thoại. Kiểm khớp với notebook tắt xoay EXIF; đây là khác biệt tiền xử lý cần nêu rõ.
+áº¢nh Ä‘áº§u vÃ o Ä‘Æ°á»£c chuyá»ƒn vá» RGB; alpha ghÃ©p vá»›i ná»n xÃ¡m 128. áº¢nh Ä‘Æ°á»£c resize cáº¡nh ngáº¯n 256,
+crop giá»¯a 224Ã—224 vÃ  chuáº©n hÃ³a theo ImageNet. Khi dÃ¹ng web, áº£nh Ä‘Æ°á»£c xoay theo EXIF Ä‘á»ƒ há»— trá»£
+áº£nh Ä‘iá»‡n thoáº¡i. Kiá»ƒm khá»›p vá»›i notebook táº¯t xoay EXIF; Ä‘Ã¢y lÃ  khÃ¡c biá»‡t tiá»n xá»­ lÃ½ cáº§n nÃªu rÃµ.
 
-API tính MSP, MaxLogit, Energy, Mahalanobis và KNN ở T=1. Quyết định sử dụng KNN với
-τ=-1.0221926071848497; điểm ≥ τ được nhận. Trường top_label bằng null khi ảnh bị từ chối.
-Xác suất Top-5 dùng nhiệt độ T=0.6049425684624492. Grad-CAM dùng gradient của logit lớp dự đoán
-tại đầu ra cuối của features, ReLU và nội suy song tuyến về 224×224.
+API tÃ­nh MSP, MaxLogit, Energy, Mahalanobis vÃ  KNN á»Ÿ T=1. Quyáº¿t Ä‘á»‹nh sá»­ dá»¥ng KNN vá»›i
+Ï„=-1.0221926071848497; Ä‘iá»ƒm â‰¥ Ï„ Ä‘Æ°á»£c nháº­n. TrÆ°á»ng top_label báº±ng null khi áº£nh bá»‹ tá»« chá»‘i.
+XÃ¡c suáº¥t Top-5 dÃ¹ng nhiá»‡t Ä‘á»™ T=0.6049425684624492. Grad-CAM dÃ¹ng gradient cá»§a logit lá»›p dá»± Ä‘oÃ¡n
+táº¡i Ä‘áº§u ra cuá»‘i cá»§a features, ReLU vÃ  ná»™i suy song tuyáº¿n vá» 224Ã—224.
 
-## Kiểm khớp và giới hạn số học
+## Kiá»ƒm khá»›p vÃ  giá»›i háº¡n sá»‘ há»c
 
-20 ảnh validation ban đầu đạt tiêu chí sai số theo bàn giao trên PyTorch 2.15.0+cu132,
-torchvision 0.29.2+cu132, RTX A6000, float32 và tắt TF32. File
-outputs/official_v2/thanhkhoi/module_review/mandatory_20.csv lưu từng ảnh,
-sai số logits và cả 5 điểm. 20 ảnh đầu đều thuộc giống Abyssinian, do đó đã kiểm tra bổ sung
-toàn bộ 238 ảnh validation để đánh giá phạm vi rộng hơn.
+20 áº£nh validation ban Ä‘áº§u Ä‘áº¡t tiÃªu chÃ­ sai sá»‘ theo bÃ n giao trÃªn PyTorch 2.15.0+cu132,
+torchvision 0.29.2+cu132, RTX A6000, float32 vÃ  táº¯t TF32. File
+outputs/study_1611_pre_v2/thanhkhoi/module_review/mandatory_20.csv lÆ°u tá»«ng áº£nh,
+sai sá»‘ logits vÃ  cáº£ 5 Ä‘iá»ƒm. 20 áº£nh Ä‘áº§u Ä‘á»u thuá»™c giá»‘ng Abyssinian, do Ä‘Ã³ Ä‘Ã£ kiá»ƒm tra bá»• sung
+toÃ n bá»™ 238 áº£nh validation Ä‘á»ƒ Ä‘Ã¡nh giÃ¡ pháº¡m vi rá»™ng hÆ¡n.
 
-Toàn bộ 238 ảnh đạt dung sai logits và điểm KNN. Sai số logits tuyệt đối lớn nhất khoảng
-6.44×10⁻⁶; sai số KNN lớn nhất khoảng 5.59×10⁻⁷. Cả 5 điểm đạt trên 236/238 ảnh;
-Bengal_143 và Siamese_167 vượt nhẹ dung sai tương đối Mahalanobis 10⁻⁶, lần lượt khoảng
-1.116×10⁻⁶ và 1.452×10⁻⁶. Giữ nguyên ngưỡng/dung sai và ghi nhận hai ca này trong Phụ lục.
-Không diễn giải 236/238 là độ chính xác phân loại. Không suy rộng kết quả sang profile CPU.
+ToÃ n bá»™ 238 áº£nh Ä‘áº¡t dung sai logits vÃ  Ä‘iá»ƒm KNN. Sai sá»‘ logits tuyá»‡t Ä‘á»‘i lá»›n nháº¥t khoáº£ng
+6.44Ã—10â»â¶; sai sá»‘ KNN lá»›n nháº¥t khoáº£ng 5.59Ã—10â»â·. Cáº£ 5 Ä‘iá»ƒm Ä‘áº¡t trÃªn 236/238 áº£nh;
+Bengal_143 vÃ  Siamese_167 vÆ°á»£t nháº¹ dung sai tÆ°Æ¡ng Ä‘á»‘i Mahalanobis 10â»â¶, láº§n lÆ°á»£t khoáº£ng
+1.116Ã—10â»â¶ vÃ  1.452Ã—10â»â¶. Giá»¯ nguyÃªn ngÆ°á»¡ng/dung sai vÃ  ghi nháº­n hai ca nÃ y trong Phá»¥ lá»¥c.
+KhÃ´ng diá»…n giáº£i 236/238 lÃ  Ä‘á»™ chÃ­nh xÃ¡c phÃ¢n loáº¡i. KhÃ´ng suy rá»™ng káº¿t quáº£ sang profile CPU.
 
-## Các tình huống minh họa
+## CÃ¡c tÃ¬nh huá»‘ng minh há»a
 
-Các ảnh được chọn từ validation hoặc chó trainval trong manifest near_val, không chọn từ test.
-Nguồn, SHA-256 và phản hồi GPU có trong outputs/official_v2/thanhkhoi/module_review/review_summary.json.
+CÃ¡c áº£nh Ä‘Æ°á»£c chá»n tá»« validation hoáº·c chÃ³ trainval trong manifest near_val, khÃ´ng chá»n tá»« test.
+Nguá»“n, SHA-256 vÃ  pháº£n há»“i GPU cÃ³ trong outputs/study_1611_pre_v2/thanhkhoi/module_review/review_summary.json.
 
-- Abyssinian_179: được nhận đúng là Abyssinian. [Chèn ảnh Top-5 và Grad-CAM sau khi xác minh UI.]
-- american_bulldog_138: bị từ chối, top_label=null. [Chèn ảnh giao diện.]
-- Abyssinian_121: nhãn thật Abyssinian, hệ thống nhận thành Maine Coon. Đây là ca sai được giữ nguyên.
-- DTD: người dùng tạo từ torchvision DTD val1[0], lớp banded theo annotation chính thức;
-  hệ thống từ chối. Chưa so byte ảnh với bản gốc DTD.
-- FeliBreed: người dùng xác nhận ảnh từ thư mục Local; hệ thống nhận sai thành Ragdoll.
-  Chưa có tên file gốc để đối chiếu với kho ảnh.
+- Abyssinian_179: Ä‘Æ°á»£c nháº­n Ä‘Ãºng lÃ  Abyssinian. [ChÃ¨n áº£nh Top-5 vÃ  Grad-CAM sau khi xÃ¡c minh UI.]
+- american_bulldog_138: bá»‹ tá»« chá»‘i, top_label=null. [ChÃ¨n áº£nh giao diá»‡n.]
+- Abyssinian_121: nhÃ£n tháº­t Abyssinian, há»‡ thá»‘ng nháº­n thÃ nh Maine Coon. ÄÃ¢y lÃ  ca sai Ä‘Æ°á»£c giá»¯ nguyÃªn.
+- DTD: ngÆ°á»i dÃ¹ng táº¡o tá»« torchvision DTD val1[0], lá»›p banded theo annotation chÃ­nh thá»©c;
+  há»‡ thá»‘ng tá»« chá»‘i. ChÆ°a so byte áº£nh vá»›i báº£n gá»‘c DTD.
+- FeliBreed: ngÆ°á»i dÃ¹ng xÃ¡c nháº­n áº£nh tá»« thÆ° má»¥c Local; há»‡ thá»‘ng nháº­n sai thÃ nh Ragdoll.
+  ChÆ°a cÃ³ tÃªn file gá»‘c Ä‘á»ƒ Ä‘á»‘i chiáº¿u vá»›i kho áº£nh.
 
-## Hiệu năng triển khai
+## Hiá»‡u nÄƒng triá»ƒn khai
 
-Đo trên Linux 6.8, CPU Xeon Gold 6138, RAM 67,098,542,080 byte, GPU RTX A6000 48 GB.
-Suy luận dùng PyTorch 2.15.0 CUDA 13.2, một luồng CPU cho các bước tính toán CPU.
-Chạy đúng 50 lượt tổng trên ảnh validation được lấy đều theo danh sách ID; bỏ 5 lượt đầu,
-thống kê 45 lượt còn lại.
+Äo trÃªn Linux 6.8, CPU Xeon Gold 6138, RAM 67,098,542,080 byte, GPU RTX A6000 48 GB.
+Suy luáº­n dÃ¹ng PyTorch 2.15.0 CUDA 13.2, má»™t luá»“ng CPU cho cÃ¡c bÆ°á»›c tÃ­nh toÃ¡n CPU.
+Cháº¡y Ä‘Ãºng 50 lÆ°á»£t tá»•ng trÃªn áº£nh validation Ä‘Æ°á»£c láº¥y Ä‘á»u theo danh sÃ¡ch ID; bá» 5 lÆ°á»£t Ä‘áº§u,
+thá»‘ng kÃª 45 lÆ°á»£t cÃ²n láº¡i.
 
-Tổng thời gian có median 169.75 ms và p95 226.83 ms. Các cặp median/p95 theo ms là:
-tiền xử lý 61.78/89.51, suy luận 11.08/13.38, điểm từ chối 5.86/6.43,
-Grad-CAM 2.91/3.88 và hậu xử lý 92.13/122.14. Không cộng các phân vị từng phần để suy ra phân vị tổng.
+Tá»•ng thá»i gian cÃ³ median 169.75 ms vÃ  p95 226.83 ms. CÃ¡c cáº·p median/p95 theo ms lÃ :
+tiá»n xá»­ lÃ½ 61.78/89.51, suy luáº­n 11.08/13.38, Ä‘iá»ƒm tá»« chá»‘i 5.86/6.43,
+Grad-CAM 2.91/3.88 vÃ  háº­u xá»­ lÃ½ 92.13/122.14. KhÃ´ng cá»™ng cÃ¡c phÃ¢n vá»‹ tá»«ng pháº§n Ä‘á»ƒ suy ra phÃ¢n vá»‹ tá»•ng.
 
-Phạm vi đo bắt đầu sau giải mã ảnh, kết thúc sau tạo PNG/Base64; không gồm đọc file,
-upload, mã hóa JSON hay render trình duyệt. GPU được đồng bộ tại các mốc đo. Grad-CAM gồm
-backward, chuẩn hóa và chuyển dữ liệu về CPU; mã hóa PNG tính vào hậu xử lý.
-Đây không phải phép đo độ trễ từ thao tác người dùng đến khi trình duyệt hiện kết quả.
+Pháº¡m vi Ä‘o báº¯t Ä‘áº§u sau giáº£i mÃ£ áº£nh, káº¿t thÃºc sau táº¡o PNG/Base64; khÃ´ng gá»“m Ä‘á»c file,
+upload, mÃ£ hÃ³a JSON hay render trÃ¬nh duyá»‡t. GPU Ä‘Æ°á»£c Ä‘á»“ng bá»™ táº¡i cÃ¡c má»‘c Ä‘o. Grad-CAM gá»“m
+backward, chuáº©n hÃ³a vÃ  chuyá»ƒn dá»¯ liá»‡u vá» CPU; mÃ£ hÃ³a PNG tÃ­nh vÃ o háº­u xá»­ lÃ½.
+ÄÃ¢y khÃ´ng pháº£i phÃ©p Ä‘o Ä‘á»™ trá»… tá»« thao tÃ¡c ngÆ°á»i dÃ¹ng Ä‘áº¿n khi trÃ¬nh duyá»‡t hiá»‡n káº¿t quáº£.
 
-Checkpoint có kích thước 16,390,147 byte; ngân hàng/tham số khoảng cách có kích thước
-21,994,386 byte. Tổng hai file là 38,384,533 byte (~38.38 MB). Cần cấp cả file KNN khi triển khai;
-kích thước file không đồng nghĩa lượng RAM/VRAM sử dụng.
+Checkpoint cÃ³ kÃ­ch thÆ°á»›c 16,390,147 byte; ngÃ¢n hÃ ng/tham sá»‘ khoáº£ng cÃ¡ch cÃ³ kÃ­ch thÆ°á»›c
+21,994,386 byte. Tá»•ng hai file lÃ  38,384,533 byte (~38.38 MB). Cáº§n cáº¥p cáº£ file KNN khi triá»ƒn khai;
+kÃ­ch thÆ°á»›c file khÃ´ng Ä‘á»“ng nghÄ©a lÆ°á»£ng RAM/VRAM sá»­ dá»¥ng.
 
-## Phụ lục cần đính kèm
+## Phá»¥ lá»¥c cáº§n Ä‘Ã­nh kÃ¨m
 
-outputs/official_v2/thanhkhoi/module_review/mandatory_20.csv và summary; kết quả mở rộng 238 ảnh và hai ca Mahalanobis;
-latency_raw.csv, latency_measured.csv, latency_summary.json; review_summary.json và ảnh chụp giao diện được xác minh;
-thông tin SHA-256/checkpoint/run và nguồn các ảnh minh họa.
+outputs/study_1611_pre_v2/thanhkhoi/module_review/mandatory_20.csv vÃ  summary; káº¿t quáº£ má»Ÿ rá»™ng 238 áº£nh vÃ  hai ca Mahalanobis;
+latency_raw.csv, latency_measured.csv, latency_summary.json; review_summary.json vÃ  áº£nh chá»¥p giao diá»‡n Ä‘Æ°á»£c xÃ¡c minh;
+thÃ´ng tin SHA-256/checkpoint/run vÃ  nguá»“n cÃ¡c áº£nh minh há»a.

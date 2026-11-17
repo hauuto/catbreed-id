@@ -1,10 +1,10 @@
-# Chụp minh chứng web official v2
+# Chá»¥p minh chá»©ng web official v2
 
-Chỉ chụp khi API đã được khởi động lại với code tích hợp `catbreed_core`. Dùng model official v2 run `20261116_060136_efficientnet_b0_s42_b8c9dba0`, frozen, seed 42, thiết bị cuda. Gói `C:\Users\vyx\Downloads\model_package_1311` là gói thử ngày 13/11, không dùng chụp cho báo cáo.
+Chá»‰ chá»¥p khi API Ä‘Ã£ Ä‘Æ°á»£c khá»Ÿi Ä‘á»™ng láº¡i vá»›i code tÃ­ch há»£p `catbreed_core`. DÃ¹ng model official v2 run `20261116_060136_efficientnet_b0_s42_b8c9dba0`, frozen, seed 42, thiáº¿t bá»‹ cuda. GÃ³i `C:\Users\vyx\Downloads\model_package_1311` lÃ  gÃ³i thá»­ ngÃ y 13/11, khÃ´ng dÃ¹ng chá»¥p cho bÃ¡o cÃ¡o.
 
-## Mở web
+## Má»Ÿ web
 
-Tại `D:\LEARNING\Nam4_Ki1\ThiGiacMayTinh\Project\catbreed-id`, nếu web và SSH tunnel đã chạy thì dùng luôn. Khi cần mở lại, chạy ở hai cửa sổ PowerShell:
+Táº¡i `D:\LEARNING\Nam4_Ki1\ThiGiacMayTinh\Project\catbreed-id`, náº¿u web vÃ  SSH tunnel Ä‘Ã£ cháº¡y thÃ¬ dÃ¹ng luÃ´n. Khi cáº§n má»Ÿ láº¡i, cháº¡y á»Ÿ hai cá»­a sá»• PowerShell:
 
 ```powershell
 .\scripts\connect_thanhkhoi_web.ps1
@@ -14,25 +14,25 @@ Tại `D:\LEARNING\Nam4_Ki1\ThiGiacMayTinh\Project\catbreed-id`, nếu web và S
 .\.venv\Scripts\python.exe -m flask --app app run --port 5000
 ```
 
-Mở http://127.0.0.1:5000 và nhấn Ctrl+F5. Mục chi tiết phải ghi đúng run ở trên, KNN, τ = -1.0221926071848497, T = 0.6049425684624492, cuda/float32. Không chạy API GPU Windows.
+Má»Ÿ http://127.0.0.1:5000 vÃ  nháº¥n Ctrl+F5. Má»¥c chi tiáº¿t pháº£i ghi Ä‘Ãºng run á»Ÿ trÃªn, KNN, Ï„ = -1.0221926071848497, T = 0.6049425684624492, cuda/float32. KhÃ´ng cháº¡y API GPU Windows.
 
-## Ảnh đầu vào và kết quả cần giữ
+## áº¢nh Ä‘áº§u vÃ o vÃ  káº¿t quáº£ cáº§n giá»¯
 
-Tất cả ảnh có sẵn tại **`D:\LEARNING\Nam4_Ki1\ThiGiacMayTinh\Project\catbreed-id\outputs\official_v2\gpu\cases`**. Chọn ảnh gốc JPG dưới đây để tải lên; `dtd.png` là ảnh chụp màn hình cũ, không phải ảnh đầu vào.
+Táº¥t cáº£ áº£nh cÃ³ sáºµn táº¡i **`D:\LEARNING\Nam4_Ki1\ThiGiacMayTinh\Project\catbreed-id\outputs\official_v2\gpu\cases`**. Chá»n áº£nh gá»‘c JPG dÆ°á»›i Ä‘Ã¢y Ä‘á»ƒ táº£i lÃªn; `dtd.png` lÃ  áº£nh chá»¥p mÃ n hÃ¬nh cÅ©, khÃ´ng pháº£i áº£nh Ä‘áº§u vÃ o.
 
-| Thứ tự | File tải lên | Nhãn nguồn và kết quả thực tế | Tên ảnh chụp |
+| Thá»© tá»± | File táº£i lÃªn | NhÃ£n nguá»“n vÃ  káº¿t quáº£ thá»±c táº¿ | TÃªn áº£nh chá»¥p |
 | --- | --- | --- | --- |
-| 01 | `id_correct.jpg` | Abyssinian_179; nhận đúng Abyssinian | `01_meo_dung_tongquan.png`, `01_meo_dung_chitiet.png` |
-| 02 | `dog.jpg` | Chó Oxford; bị từ chối | `02_cho_tongquan.png`, `02_cho_chitiet.png` |
-| 03 | `dtd_val_sample.jpg` | DTD val1[0], banded theo quy trình người dùng; bị từ chối | `03_dtd_tongquan.png`, `03_dtd_chitiet.png` |
-| 04 | `felibreed.jpg` | Người dùng xác nhận thư mục Local; được nhận là Ragdoll | `04_felibreed_tongquan.png`, `04_felibreed_chitiet.png` |
-| 05 | `id_error.jpg` | Abyssinian_121; được nhận sai thành Maine Coon | `05_meo_sai_tongquan.png`, `05_meo_sai_chitiet.png` |
+| 01 | `id_correct.jpg` | Abyssinian_179; nháº­n Ä‘Ãºng Abyssinian | `01_meo_dung_tongquan.png`, `01_meo_dung_chitiet.png` |
+| 02 | `dog.jpg` | ChÃ³ Oxford; bá»‹ tá»« chá»‘i | `02_cho_tongquan.png`, `02_cho_chitiet.png` |
+| 03 | `dtd_val_sample.jpg` | DTD val1[0], banded theo quy trÃ¬nh ngÆ°á»i dÃ¹ng; bá»‹ tá»« chá»‘i | `03_dtd_tongquan.png`, `03_dtd_chitiet.png` |
+| 04 | `felibreed.jpg` | NgÆ°á»i dÃ¹ng xÃ¡c nháº­n thÆ° má»¥c Local; Ä‘Æ°á»£c nháº­n lÃ  Ragdoll | `04_felibreed_tongquan.png`, `04_felibreed_chitiet.png` |
+| 05 | `id_error.jpg` | Abyssinian_121; Ä‘Æ°á»£c nháº­n sai thÃ nh Maine Coon | `05_meo_sai_tongquan.png`, `05_meo_sai_chitiet.png` |
 
-## Chụp mỗi ca
+## Chá»¥p má»—i ca
 
-1. Tải đúng ảnh, nhấn phân tích và chờ kết quả cùng Grad-CAM tải xong.
-2. Chụp tổng quan: ảnh đầu vào, tên dự đoán hoặc trạng thái từ chối, Top-5 và Grad-CAM. Nếu trang dài, chụp toàn trang hoặc thêm ảnh phần dưới.
-3. Mở “Chi tiết mô hình và 5 điểm từ chối”, chụp đủ bảng năm phương pháp/điểm/ngưỡng và thông tin model. Có thể chụp thêm khi bảng không vừa màn hình.
-4. Lưu vào **`D:\LEARNING\Nam4_Ki1\ThiGiacMayTinh\Project\catbreed-id\outputs\official_v2\screenshots\module_review`** theo tên trong bảng. Hai ảnh cũ nằm ở thư mục screenshots gốc chưa phải bộ minh chứng cuối.
+1. Táº£i Ä‘Ãºng áº£nh, nháº¥n phÃ¢n tÃ­ch vÃ  chá» káº¿t quáº£ cÃ¹ng Grad-CAM táº£i xong.
+2. Chá»¥p tá»•ng quan: áº£nh Ä‘áº§u vÃ o, tÃªn dá»± Ä‘oÃ¡n hoáº·c tráº¡ng thÃ¡i tá»« chá»‘i, Top-5 vÃ  Grad-CAM. Náº¿u trang dÃ i, chá»¥p toÃ n trang hoáº·c thÃªm áº£nh pháº§n dÆ°á»›i.
+3. Má»Ÿ â€œChi tiáº¿t mÃ´ hÃ¬nh vÃ  5 Ä‘iá»ƒm tá»« chá»‘iâ€, chá»¥p Ä‘á»§ báº£ng nÄƒm phÆ°Æ¡ng phÃ¡p/Ä‘iá»ƒm/ngÆ°á»¡ng vÃ  thÃ´ng tin model. CÃ³ thá»ƒ chá»¥p thÃªm khi báº£ng khÃ´ng vá»«a mÃ n hÃ¬nh.
+4. LÆ°u vÃ o **`D:\LEARNING\Nam4_Ki1\ThiGiacMayTinh\Project\catbreed-id\outputs\official_v2\screenshots\module_review`** theo tÃªn trong báº£ng. Hai áº£nh cÅ© náº±m á»Ÿ thÆ° má»¥c screenshots gá»‘c chÆ°a pháº£i bá»™ minh chá»©ng cuá»‘i.
 
-Mục tiêu tối thiểu là 10 ảnh màn hình đủ nội dung. Giữ nguyên ca sai và FeliBreed được nhận. Nếu kết quả khác bảng, giữ ảnh chụp thực tế và báo lại trước khi viết báo cáo. Nhãn Local do người dùng xác nhận; chưa đối chiếu tên file gốc FeliBreed. DTD chưa so byte ảnh với kho gốc. Nêu rõ hai giới hạn nguồn này trong báo cáo.
+Má»¥c tiÃªu tá»‘i thiá»ƒu lÃ  10 áº£nh mÃ n hÃ¬nh Ä‘á»§ ná»™i dung. Giá»¯ nguyÃªn ca sai vÃ  FeliBreed Ä‘Æ°á»£c nháº­n. Náº¿u káº¿t quáº£ khÃ¡c báº£ng, giá»¯ áº£nh chá»¥p thá»±c táº¿ vÃ  bÃ¡o láº¡i trÆ°á»›c khi viáº¿t bÃ¡o cÃ¡o. NhÃ£n Local do ngÆ°á»i dÃ¹ng xÃ¡c nháº­n; chÆ°a Ä‘á»‘i chiáº¿u tÃªn file gá»‘c FeliBreed. DTD chÆ°a so byte áº£nh vá»›i kho gá»‘c. NÃªu rÃµ hai giá»›i háº¡n nguá»“n nÃ y trong bÃ¡o cÃ¡o.

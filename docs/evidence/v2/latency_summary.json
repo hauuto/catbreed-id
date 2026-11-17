@@ -1,0 +1,60 @@
+{
+  "chapter5_ready": false,
+  "reason": "Technical measurements; complete consistency and browser evidence before chapter 5",
+  "protocol": "50_total_discard_first_5",
+  "n_total": 50,
+  "n_measured": 45,
+  "n_warmup": 5,
+  "precision": "float32",
+  "exif_transpose": true,
+  "machine": {
+    "os": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "cpu": "Intel(R) Xeon(R) Gold 6138 CPU @ 2.00GHz",
+    "logical_cpus": 40,
+    "hostname": "megalab-HP-Z8-G4-Workstation",
+    "user": "thanhkhoi",
+    "ram_bytes": 67098542080,
+    "device": "cuda",
+    "torch": "2.15.0+cu132",
+    "torchvision": "0.29.2+cu132",
+    "python": "3.13.18",
+    "torch_threads": 1,
+    "gpu": "NVIDIA RTX A6000",
+    "gpu_memory_bytes": 50887852032,
+    "cuda_runtime": "13.2"
+  },
+  "checkpoint_sha256": "6cc4bf72641b696b6765ef73a6f772cb65d5b28340088bf44e3b4ebdaf7bd586",
+  "run_id": "20261117_021310_efficientnet_b0_s42_8b69c4e9",
+  "size_bytes": {
+    "checkpoint.pt": 16390595,
+    "distance_parameters.npz": 21968575
+  },
+  "timing_scope": "PIL image already decoded; excludes upload, disk IO, JSON encoding, browser rendering",
+  "gradcam_scope": "Backward and heatmap normalization; PNG encoding counted in postprocess",
+  "latency_ms": {
+    "preprocess": {
+      "median": 55.10510096792132,
+      "p95": 85.45364097226408
+    },
+    "inference": {
+      "median": 10.176899959333241,
+      "p95": 10.6587816728279
+    },
+    "gradcam": {
+      "median": 2.5016439612954855,
+      "p95": 2.5816816138103604
+    },
+    "rejection": {
+      "median": 4.715109011158347,
+      "p95": 5.0572340143844485
+    },
+    "postprocess": {
+      "median": 80.56527900043875,
+      "p95": 111.48378441575912
+    },
+    "total": {
+      "median": 154.7339929966256,
+      "p95": 216.17188043892378
+    }
+  }
+}
