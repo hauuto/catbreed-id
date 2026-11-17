@@ -113,11 +113,12 @@ Chạy tại thư mục riêng của Vỹ; đặt PYTHONPATH=runtime_api:., OMP_
     python scripts/report_serving_mode_effect.py --package model_package_v2 --images inputs/oxford --output outputs/two_tier_20261117/tier2_app.csv
     python scripts/benchmark_official_web.py --package model_package_v2 --images inputs/oxford --device cuda --expected-user thanhkhoi --output outputs/two_tier_20261117
 
-## Các mục bàn giao còn lại
+## Trạng thái bàn giao
 
-- Commit/push báo cáo, script và bằng chứng mới lên feature/thezyx; không đưa model_package hoặc thay đổi không liên quan vào commit.
-- `/health` trả `is_mock=false` nhưng chưa hiển thị SHA. SHA đúng đã được xác minh qua metadata `/predict` và hash package; giữ nguyên app, chờ Hậu xác nhận cách chứng minh thay thế này.
-- Gửi kết quả cho Hậu; chat này chưa gửi tin nhắn thay người dùng.
-- Số liệu trước v2 đã lưu riêng ở outputs/study_1611_pre_v2 và docs/evidence/study_1611_pre_v2, không dùng cho báo cáo v2.
+- Đã commit báo cáo, scripts, tests và bằng chứng ở commit 5cd52c9; đã merge integrate/final và push nhánh feature/thezyx tại commit d717084.
+- Giữ nguyên app và SHA. /health trả is_mock=false; SHA v2 được đối chiếu bằng checkpoint, thresholds.json, locked_selection.json và metadata /predict. Không sửa /health để thêm SHA.
+- Số liệu kỹ thuật theo chỉ đạo hai tầng đã đầy đủ. Nội dung gửi Hậu được soạn sẵn trong [gui_hau_v2_20261117.md](gui_hau_v2_20261117.md); việc xác nhận tiếp nhận/nghiệm thu cuối thuộc Hậu.
+- Chat này chuẩn bị tài liệu và file ZIP để người dùng gửi; chưa có xác nhận gửi trực tiếp cho Hậu.
+- Số liệu trước v2 được lưu riêng ở outputs/study_1611_pre_v2 và docs/evidence/study_1611_pre_v2, không dùng cho báo cáo v2.
 
-Báo cáo được ghi UTF-8; không đổi dữ liệu kiểm thử trong lần sửa dấu tiếng Việt.
+Báo cáo được ghi UTF-8. Không đổi dữ liệu kiểm thử trong lần chốt trạng thái bàn giao.
