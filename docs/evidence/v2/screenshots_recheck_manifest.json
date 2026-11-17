@@ -1,0 +1,90 @@
+{
+  "source": "Existing v2 screenshots, unchanged app/checkpoint; fresh HTTP recheck matches all five saved status/top/KNN results",
+  "new_screenshots_captured": false,
+  "cases": [
+    {
+      "case": "id_correct.jpg",
+      "image_id": "Abyssinian_179",
+      "status": "accepted",
+      "top": "Abyssinian",
+      "knn": -0.9979786196168877,
+      "sha": "6cc4bf72641b696b6765ef73a6f772cb65d5b28340088bf44e3b4ebdaf7bd586",
+      "input_sha256": "84c83acc06eaf0a597a43d8752a9b341f2657b4ba7fdd532a6bb12f45a78fea0",
+      "result_file": "id_correct_required179_result.json"
+    },
+    {
+      "case": "dog.jpg",
+      "status": "rejected",
+      "top": null,
+      "knn": -1.2155317236738423,
+      "sha": "6cc4bf72641b696b6765ef73a6f772cb65d5b28340088bf44e3b4ebdaf7bd586",
+      "input_sha256": "cc92335db2498e8bcc378581e6a3d63201d850d9a4ff3099263b33884b66a5f7"
+    },
+    {
+      "case": "dtd_val_sample.jpg",
+      "status": "rejected",
+      "top": null,
+      "knn": -1.3661151813690893,
+      "sha": "6cc4bf72641b696b6765ef73a6f772cb65d5b28340088bf44e3b4ebdaf7bd586",
+      "input_sha256": "34c3c6c85b4fd5851b4ce4202353fda2ec2767b87cf10a8bad2acb21c7924e4b"
+    },
+    {
+      "case": "felibreed.jpg",
+      "status": "accepted",
+      "top": "Ragdoll",
+      "knn": -1.0595768519450652,
+      "sha": "6cc4bf72641b696b6765ef73a6f772cb65d5b28340088bf44e3b4ebdaf7bd586",
+      "input_sha256": "c88f6960c2293c4c53c51579802999a45a72cd9882cc68bd0e6c3080a9d15d67"
+    },
+    {
+      "case": "id_error.jpg",
+      "status": "rejected",
+      "top": null,
+      "knn": -1.1172601320405229,
+      "sha": "6cc4bf72641b696b6765ef73a6f772cb65d5b28340088bf44e3b4ebdaf7bd586",
+      "input_sha256": "cafd1c4b626a44c43e5223673d7602f5c3839600670590a9bd8bbb994d4cc148"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "01_id_correct_overview.png",
+      "sha256": "2d8b2a8399a41df756d70dcadd1fbae1265b17a5b7b160267dfd7077871f4acf"
+    },
+    {
+      "file": "02_id_correct_details.png",
+      "sha256": "4992a8f974654c4e2353943af0849a840ca3bf4f0ac6fbcb8469e7eb87e64fd9"
+    },
+    {
+      "file": "03_dog_overview.png",
+      "sha256": "ebe3bacfec94713271e5e3093afed7f525240ec795fa273f06a85a8403539be7"
+    },
+    {
+      "file": "04_dog_details.png",
+      "sha256": "5fd5cec4495670eeaab5a508f6920478f1d1e44da777160b2df21064321c15e6"
+    },
+    {
+      "file": "05_dtd_overview.png",
+      "sha256": "6ca203dd5435ef081e08c2259302b488d2776e77ebc8ff8c81b8e62943565ab8"
+    },
+    {
+      "file": "06_dtd_details.png",
+      "sha256": "d28fc5a9d3d5eb738c5b6a0772ded132c4018bf5ea8c8da7a103f8dd43a946f8"
+    },
+    {
+      "file": "07_felibreed_overview.png",
+      "sha256": "556a8b04f6a483490b9a9362e34ba4029e88793fd7de3837f63d949e19831dcc"
+    },
+    {
+      "file": "08_felibreed_details.png",
+      "sha256": "203751c29d03eee775cce8086ef2c4700e7c62697ecb409f1081d2a870864cae"
+    },
+    {
+      "file": "09_id_error_overview.png",
+      "sha256": "02dc8366ff1c9c8566bdc3159c522b91d137b751b1038fa88e390039a5a68a0c"
+    },
+    {
+      "file": "10_id_error_details.png",
+      "sha256": "0ba46943c5be35047c676a2a42e4d73b08a6265592ea33f0d45f41803c2fbb7e"
+    }
+  ]
+}

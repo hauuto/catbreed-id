@@ -1,0 +1,18 @@
+{
+  "protocol": "Hau two-tier clarification 2026-11-17",
+  "tier1_passed": true,
+  "tier1_n": 238,
+  "tier2_report_complete": true,
+  "tier2_is_acceptance_gate": false,
+  "top1_changed": 0,
+  "knn_decision_changed": 1,
+  "latency_total_attempts": 50,
+  "latency_warmup": 5,
+  "latency_measured": 45,
+  "http_cases_rechecked": 5,
+  "existing_screenshots_retained": 10,
+  "new_screenshots_captured": false,
+  "technical_report_complete": true,
+  "human_acceptance_pending": true,
+  "git_pushed": true
+}

@@ -1,0 +1,32 @@
+{
+  "purpose": "notebook_reference_reproduction_not_single_image_api_gate",
+  "chapter5_ready": false,
+  "run_id": "20261117_021310_efficientnet_b0_s42_8b69c4e9",
+  "checkpoint_sha256": "6cc4bf72641b696b6765ef73a6f772cb65d5b28340088bf44e3b4ebdaf7bd586",
+  "hostname": "megalab-HP-Z8-G4-Workstation",
+  "gpu": "NVIDIA RTX A6000",
+  "torch": "2.15.0+cu132",
+  "torchvision": "0.29.2+cu132",
+  "python": "3.13.18",
+  "cudnn_tf32": true,
+  "matmul_tf32": false,
+  "batch_size": 32,
+  "last_batch_size": 14,
+  "n": 238,
+  "passed": 238,
+  "max_logits_abs": 0.0,
+  "max_features_abs": 0.0,
+  "max_scores_abs": {
+    "MSP": 0.0,
+    "MaxLogit": 0.0,
+    "Energy": 0.0,
+    "Mahalanobis": 1.3642420526593924e-12,
+    "KNN": 4.440892098500626e-16
+  },
+  "reference_sha256": {
+    "checkpoint.pt": "6cc4bf72641b696b6765ef73a6f772cb65d5b28340088bf44e3b4ebdaf7bd586",
+    "val.npz": "a62be1d85898cb6b30eb06e662394b7d42e8678364948ea0a90a4a011009375c",
+    "validation_scores.csv": "723a87d502edd3a6d052f3d093eeb9914b07acead7cbffe101cd863c57adce3e"
+  },
+  "failures": []
+}
