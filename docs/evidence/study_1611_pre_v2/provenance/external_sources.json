@@ -1,0 +1,19 @@
+{
+  "dtd": {
+    "local_file": "outputs/study_1611_pre_v2/gpu/cases/dtd_val_sample.jpg",
+    "sha256": "34c3c6c85b4fd5851b4ce4202353fda2ec2767b87cf10a8bad2acb21c7924e4b",
+    "source": "https://www.robots.ox.ac.uk/~vgg/data/dtd/",
+    "user_reported_generation": "torchvision.datasets.DTD(root='./data', split='val', partition=1, download=True)[0]",
+    "official_val1_first_id": "banded/banded_0006.jpg",
+    "official_annotation_copy": "outputs/study_1611_pre_v2/provenance/dtd_val1.txt",
+    "verification": "User procedure and official val1 annotation agree on index and class; original image bytes not compared"
+  },
+  "felibreed": {
+    "local_file": "outputs/study_1611_pre_v2/gpu/cases/felibreed.jpg",
+    "sha256": "c88f6960c2293c4c53c51579802999a45a72cd9882cc68bd0e6c3080a9d15d67",
+    "source": "https://data.mendeley.com/datasets/ng6tv57j5c/2",
+    "user_reported_folder": "Local",
+    "original_filename": null,
+    "verification": "Local class confirmed by user; original archive filename and image bytes not independently matched"
+  }
+}

@@ -227,7 +227,11 @@ __marimo__/
 # Project ignore
 .venv/
 outputs/
+.venv-notebook/
+.test_tmp/
+pytest-cache-files-*/
+model_package/
 *.pt
 *.pth
-data
-deliverables
+model_package/*.npz
+model_package/ood_candidate_thresholds.json

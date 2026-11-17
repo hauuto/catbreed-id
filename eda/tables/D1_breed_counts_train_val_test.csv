@@ -1,0 +1,14 @@
+﻿breed,train,val,test,Tổng
+Abyssinian,80,20,98,198
+Bengal,80,20,100,200
+Birman,80,20,100,200
+Bombay,77,19,88,184
+British_Shorthair,80,20,100,200
+Egyptian_Mau,74,19,97,190
+Maine_Coon,80,20,100,200
+Persian,80,20,100,200
+Ragdoll,80,20,100,200
+Russian_Blue,80,20,100,200
+Siamese,79,20,100,199
+Sphynx,80,20,100,200
+Tổng,950,238,1183,2371

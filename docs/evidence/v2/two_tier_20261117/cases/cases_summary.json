@@ -1,0 +1,44 @@
+[
+  {
+    "case": "id_correct.jpg",
+    "image_id": "Abyssinian_179",
+    "status": "accepted",
+    "top": "Abyssinian",
+    "knn": -0.9979786196168877,
+    "sha": "6cc4bf72641b696b6765ef73a6f772cb65d5b28340088bf44e3b4ebdaf7bd586",
+    "input_sha256": "84c83acc06eaf0a597a43d8752a9b341f2657b4ba7fdd532a6bb12f45a78fea0",
+    "result_file": "id_correct_required179_result.json"
+  },
+  {
+    "case": "dog.jpg",
+    "status": "rejected",
+    "top": null,
+    "knn": -1.2155317236738423,
+    "sha": "6cc4bf72641b696b6765ef73a6f772cb65d5b28340088bf44e3b4ebdaf7bd586",
+    "input_sha256": "cc92335db2498e8bcc378581e6a3d63201d850d9a4ff3099263b33884b66a5f7"
+  },
+  {
+    "case": "dtd_val_sample.jpg",
+    "status": "rejected",
+    "top": null,
+    "knn": -1.3661151813690893,
+    "sha": "6cc4bf72641b696b6765ef73a6f772cb65d5b28340088bf44e3b4ebdaf7bd586",
+    "input_sha256": "34c3c6c85b4fd5851b4ce4202353fda2ec2767b87cf10a8bad2acb21c7924e4b"
+  },
+  {
+    "case": "felibreed.jpg",
+    "status": "accepted",
+    "top": "Ragdoll",
+    "knn": -1.0595768519450652,
+    "sha": "6cc4bf72641b696b6765ef73a6f772cb65d5b28340088bf44e3b4ebdaf7bd586",
+    "input_sha256": "c88f6960c2293c4c53c51579802999a45a72cd9882cc68bd0e6c3080a9d15d67"
+  },
+  {
+    "case": "id_error.jpg",
+    "status": "rejected",
+    "top": null,
+    "knn": -1.1172601320405229,
+    "sha": "6cc4bf72641b696b6765ef73a6f772cb65d5b28340088bf44e3b4ebdaf7bd586",
+    "input_sha256": "cafd1c4b626a44c43e5223673d7602f5c3839600670590a9bd8bbb994d4cc148"
+  }
+]

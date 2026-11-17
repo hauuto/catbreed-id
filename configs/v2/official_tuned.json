@@ -1,0 +1,36 @@
+{
+ "profile": "official",
+ "protocol_id": "Nhom09_v2_2026-11-16",
+ "owner": "VPS_tuned",
+ "frozen_epochs": 30,
+ "finetuned_epochs": 30,
+ "baseline_epochs": 80,
+ "knn_k": 10,
+ "unseen_cat_root": "/mnt/thanhkhoi/felibreed",
+ "unseen_cat_classes": [
+  "Mixed Breed",
+  "Local"
+ ],
+ "model_overrides": {
+  "cnn_baseline": {
+   "baseline_batchnorm": true,
+   "baseline_lr": 0.001
+  },
+  "efficientnet_b0": {
+   "fine_tune_fraction": 0.5
+  },
+  "mobilenet_v2": {
+   "backbone_lr": 0.0001,
+   "dropout": 0.0,
+   "fine_tune_fraction": 1.0,
+   "frozen_lr": 0.0003,
+   "head_hidden": 512,
+   "head_lr": 0.001
+  },
+  "resnet50": {
+   "backbone_lr": 1e-05,
+   "frozen_lr": 0.0003,
+   "head_lr": 0.0001
+  }
+ }
+}

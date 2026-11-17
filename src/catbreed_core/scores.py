@@ -1,17 +1,15 @@
-"""Điểm từ chối, chép nguyên từ notebooks/kaggle_runner.ipynb (mục 11.1–11.2)."""
+"""Notebook-compatible rejection scores."""
+
 import numpy as np
 from scipy.special import logsumexp, softmax
 from sklearn.covariance import LedoitWolf
 from sklearn.neighbors import NearestNeighbors
 
-CLASS_INDICES = list(range(12))  # len(CAT_BREEDS) trong notebook
 METHODS = ["MSP", "MaxLogit", "Energy", "Mahalanobis", "KNN"]
-LOGIT_METHODS, DISTANCE_METHODS = METHODS[:3], METHODS[3:]
+CLASS_INDICES = list(range(12))
 
 
-# ─── 11.1 MSP, MaxLogit và Energy từ logits ──────────────────────────────────────────────────────────
 def logit_scores(logits, temperature=1.0):
-    # Phụ lục B: softmax và logsumexp của SciPy trừ logit lớn nhất trước khi lấy mũ
     logits = np.asarray(logits, dtype=np.float64)
     scaled = logits / temperature
     return {
@@ -21,7 +19,6 @@ def logit_scores(logits, temperature=1.0):
     }
 
 
-# ─── 11.2 Mahalanobis và KNN từ vector đặc trưng ─────────────────────────────────────────────────────
 def unit_norm(x):
     return x / np.maximum(np.linalg.norm(x, axis=1, keepdims=True), 1e-12)
 
@@ -34,12 +31,12 @@ class DistanceScores:
         if len(x) < k:
             raise ValueError("Train bank nhỏ hơn k; không tự đổi k.")
         self.means = np.stack([x[y == c].mean(axis=0) for c in CLASS_INDICES])
-        covariance = LedoitWolf().fit(x - self.means[y])  # §2.6.3: hiệp phương sai chung của phần dư
+        covariance = LedoitWolf().fit(x - self.means[y])
         self.precision, self.shrinkage = covariance.precision_, float(covariance.shrinkage_)
         return self.index(unit_norm(x), k)
 
     def index(self, bank, k):
-        self.bank, self.k = bank, k  # §2.6.4: ngân hàng train đã chuẩn hóa L2
+        self.bank, self.k = bank, k
         self.neighbors = NearestNeighbors(n_neighbors=k, metric="euclidean", algorithm="brute").fit(bank)
         return self
 
@@ -71,8 +68,9 @@ class DistanceScores:
     def load(cls, path):
         with np.load(path, allow_pickle=False) as stored:
             distance = cls()
-            distance.means, distance.precision = stored["means"], stored["precision"]
-            distance.shrinkage = float(stored["shrinkage"])
+            distance.means = stored["means"]
+            distance.precision = stored["precision"]
+            distance.shrinkage = float(stored["shrinkage"]) if "shrinkage" in stored else None
             return distance.index(stored["bank"], int(stored["k"]))
 
 
