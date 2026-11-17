@@ -1,25 +1,25 @@
-# Review chốt bàn giao web official v2
+# Review chá»‘t bÃ n giao web official v2
 
-Phạm vi review gồm adapter, API, module chung, test, script kiểm khớp, giao thức benchmark, phần chi tiết trên giao diện và báo cáo. Đã đọc diff của các file sửa và đối chiếu log nghiệm thu; không phát hiện lỗi chức năng mới sau bản sửa method đã được kiểm trên thanhkhoi.
+Pháº¡m vi review gá»“m adapter, API, module chung, test, script kiá»ƒm khá»›p, giao thá»©c benchmark, pháº§n chi tiáº¿t trÃªn giao diá»‡n vÃ  bÃ¡o cÃ¡o. ÄÃ£ Ä‘á»c diff cá»§a cÃ¡c file sá»­a vÃ  Ä‘á»‘i chiáº¿u log nghiá»‡m thu; khÃ´ng phÃ¡t hiá»‡n lá»—i chá»©c nÄƒng má»›i sau báº£n sá»­a method Ä‘Ã£ Ä‘Æ°á»£c kiá»ƒm trÃªn thanhkhoi.
 
-## Bằng chứng kiểm tra
+## Báº±ng chá»©ng kiá»ƒm tra
 
-- 15 test hồi quy đạt, không skip: `docs/evidence/official_v2/adapter/pytest.xml` và `pytest.log`.
-- Cả gói thử 13/11 và official v2 đạt 20/20 qua adapter; bộ khóa official vẫn ưu tiên KNN khi tham số thử là MSP.
-- 10 lần predict đầy đủ trên hai gói có Top-5, năm điểm, Grad-CAM và metadata; official giữ kết quả mong đợi.
-- Kiểm mở rộng official 236/238; hai ca Mahalanobis đã công bố, không nới dung sai.
-- Đủ 10 ảnh chụp, đối chiếu SHA với bản gốc đã xem trước; được nhúng đầy đủ trong Word.
-- Benchmark giữ đúng 50 lượt tổng, 5 làm nóng, 45 thống kê; không trộn kết quả gói 13/11 vào số đo official.
-- Đã kiểm cú pháp Python, JavaScript và `git diff --check` trong quá trình chốt. Kết quả GPU được tái dùng từ phiên nghiệm thu đã lưu vì sửa cuối chỉ ở dependency, tài liệu, gói bằng chứng và dàn trang.
+- 15 test há»“i quy Ä‘áº¡t, khÃ´ng skip: `docs/evidence/study_1611_pre_v2/adapter/pytest.xml` vÃ  `pytest.log`.
+- Cáº£ gÃ³i thá»­ 13/11 vÃ  official v2 Ä‘áº¡t 20/20 qua adapter; bá»™ khÃ³a official váº«n Æ°u tiÃªn KNN khi tham sá»‘ thá»­ lÃ  MSP.
+- 10 láº§n predict Ä‘áº§y Ä‘á»§ trÃªn hai gÃ³i cÃ³ Top-5, nÄƒm Ä‘iá»ƒm, Grad-CAM vÃ  metadata; official giá»¯ káº¿t quáº£ mong Ä‘á»£i.
+- Kiá»ƒm má»Ÿ rá»™ng official 236/238; hai ca Mahalanobis Ä‘Ã£ cÃ´ng bá»‘, khÃ´ng ná»›i dung sai.
+- Äá»§ 10 áº£nh chá»¥p, Ä‘á»‘i chiáº¿u SHA vá»›i báº£n gá»‘c Ä‘Ã£ xem trÆ°á»›c; Ä‘Æ°á»£c nhÃºng Ä‘áº§y Ä‘á»§ trong Word.
+- Benchmark giá»¯ Ä‘Ãºng 50 lÆ°á»£t tá»•ng, 5 lÃ m nÃ³ng, 45 thá»‘ng kÃª; khÃ´ng trá»™n káº¿t quáº£ gÃ³i 13/11 vÃ o sá»‘ Ä‘o official.
+- ÄÃ£ kiá»ƒm cÃº phÃ¡p Python, JavaScript vÃ  `git diff --check` trong quÃ¡ trÃ¬nh chá»‘t. Káº¿t quáº£ GPU Ä‘Æ°á»£c tÃ¡i dÃ¹ng tá»« phiÃªn nghiá»‡m thu Ä‘Ã£ lÆ°u vÃ¬ sá»­a cuá»‘i chá»‰ á»Ÿ dependency, tÃ i liá»‡u, gÃ³i báº±ng chá»©ng vÃ  dÃ n trang.
 
-## Những điểm được hoàn thiện khi review
+## Nhá»¯ng Ä‘iá»ƒm Ä‘Æ°á»£c hoÃ n thiá»‡n khi review
 
-Đã khai báo SciPy trong requirements của API vì module chung dùng scipy.special. Thư mục model_package, môi trường notebook và thư mục pytest tạm được bỏ qua trong Git để tránh đưa gói model hay cache vào commit.
+ÄÃ£ khai bÃ¡o SciPy trong requirements cá»§a API vÃ¬ module chung dÃ¹ng scipy.special. ThÆ° má»¥c model_package, mÃ´i trÆ°á»ng notebook vÃ  thÆ° má»¥c pytest táº¡m Ä‘Æ°á»£c bá» qua trong Git Ä‘á»ƒ trÃ¡nh Ä‘Æ°a gÃ³i model hay cache vÃ o commit.
 
-Nguồn số liệu và ảnh để dựng lại báo cáo nay ở `docs/evidence/official_v2/`. Report builder đọc từ bản sao này. Các cờ trạng thái cũ trong kết quả đo được giữ nguyên như lịch sử; trạng thái hiện tại được ghi trong tài liệu nghiệm thu và báo cáo cuối.
+Nguá»“n sá»‘ liá»‡u vÃ  áº£nh Ä‘á»ƒ dá»±ng láº¡i bÃ¡o cÃ¡o nay á»Ÿ `docs/evidence/study_1611_pre_v2/`. Report builder Ä‘á»c tá»« báº£n sao nÃ y. CÃ¡c cá» tráº¡ng thÃ¡i cÅ© trong káº¿t quáº£ Ä‘o Ä‘Æ°á»£c giá»¯ nguyÃªn nhÆ° lá»‹ch sá»­; tráº¡ng thÃ¡i hiá»‡n táº¡i Ä‘Æ°á»£c ghi trong tÃ i liá»‡u nghiá»‡m thu vÃ  bÃ¡o cÃ¡o cuá»‘i.
 
-## Phạm vi lưu Git và giới hạn
+## Pháº¡m vi lÆ°u Git vÃ  giá»›i háº¡n
 
-Chỉ stage danh sách file thuộc bàn giao web, hai file Word/PDF cuối và bằng chứng liên quan. Không stage model, môi trường Python, bộ dữ liệu, các báo cáo tuần cũ hoặc những phần phân tích/huấn luyện chưa thuộc phạm vi review. Nội dung thay đổi sẵn có trong lời giới thiệu index.html được giữ nguyên và review cùng giao diện.
+Chá»‰ stage danh sÃ¡ch file thuá»™c bÃ n giao web, hai file Word/PDF cuá»‘i vÃ  báº±ng chá»©ng liÃªn quan. KhÃ´ng stage model, mÃ´i trÆ°á»ng Python, bá»™ dá»¯ liá»‡u, cÃ¡c bÃ¡o cÃ¡o tuáº§n cÅ© hoáº·c nhá»¯ng pháº§n phÃ¢n tÃ­ch/huáº¥n luyá»‡n chÆ°a thuá»™c pháº¡m vi review. Ná»™i dung thay Ä‘á»•i sáºµn cÃ³ trong lá»i giá»›i thiá»‡u index.html Ä‘Æ°á»£c giá»¯ nguyÃªn vÃ  review cÃ¹ng giao diá»‡n.
 
-Hai ca Mahalanobis và mức xác minh nguồn ảnh DTD/FeliBreed tiếp tục là giới hạn được công bố. Không có xác nhận độ chính xác toàn bộ dữ liệu ngoại lai, độ trễ từ đầu đến cuối qua mạng, hoặc khớp từng bit giữa phần cứng. Việc commit cục bộ không đồng nghĩa đã push hoặc đã được người khác duyệt trên remote.
+Hai ca Mahalanobis vÃ  má»©c xÃ¡c minh nguá»“n áº£nh DTD/FeliBreed tiáº¿p tá»¥c lÃ  giá»›i háº¡n Ä‘Æ°á»£c cÃ´ng bá»‘. KhÃ´ng cÃ³ xÃ¡c nháº­n Ä‘á»™ chÃ­nh xÃ¡c toÃ n bá»™ dá»¯ liá»‡u ngoáº¡i lai, Ä‘á»™ trá»… tá»« Ä‘áº§u Ä‘áº¿n cuá»‘i qua máº¡ng, hoáº·c khá»›p tá»«ng bit giá»¯a pháº§n cá»©ng. Viá»‡c commit cá»¥c bá»™ khÃ´ng Ä‘á»“ng nghÄ©a Ä‘Ã£ push hoáº·c Ä‘Ã£ Ä‘Æ°á»£c ngÆ°á»i khÃ¡c duyá»‡t trÃªn remote.

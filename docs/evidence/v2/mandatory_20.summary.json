@@ -1,0 +1,201 @@
+{
+  "run_id": "20261117_021310_efficientnet_b0_s42_8b69c4e9",
+  "checkpoint_sha256": "6cc4bf72641b696b6765ef73a6f772cb65d5b28340088bf44e3b4ebdaf7bd586",
+  "device": "cuda",
+  "precision": "float32",
+  "torch": "2.15.0+cu132",
+  "torchvision": "0.29.2+cu132",
+  "exif_transpose": false,
+  "n": 20,
+  "passed": 0,
+  "criteria": "logits and scores abs < 1e-4; Mahalanobis also permits relative < 1e-6 (OR, not added)",
+  "max_logits_abs": 0.00993967056274414,
+  "max_scores_abs": {
+    "MSP": 0.001339915638540079,
+    "MaxLogit": 0.005940049886703491,
+    "Energy": 0.006054124970238828,
+    "Mahalanobis": 1.6275653860629973,
+    "KNN": 0.00025371324010181606
+  },
+  "failures": [
+    {
+      "image_id": "Abyssinian_101",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_102",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_11",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_119",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_12",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_121",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_127",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_134",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_149",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_153",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_155",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_159",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_170",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_172",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_179",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_18",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_182",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_183",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_195",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_197",
+      "methods": [
+        "MSP",
+        "Energy",
+        "Mahalanobis"
+      ]
+    }
+  ]
+}

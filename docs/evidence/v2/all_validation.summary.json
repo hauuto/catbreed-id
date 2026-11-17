@@ -1,0 +1,2113 @@
+{
+  "run_id": "20261117_021310_efficientnet_b0_s42_8b69c4e9",
+  "checkpoint_sha256": "6cc4bf72641b696b6765ef73a6f772cb65d5b28340088bf44e3b4ebdaf7bd586",
+  "device": "cuda",
+  "precision": "float32",
+  "torch": "2.15.0+cu132",
+  "torchvision": "0.29.2+cu132",
+  "exif_transpose": false,
+  "n": 238,
+  "passed": 0,
+  "criteria": "logits and scores abs < 1e-4; Mahalanobis also permits relative < 1e-6 (OR, not added)",
+  "max_logits_abs": 0.01070261001586914,
+  "max_scores_abs": {
+    "MSP": 0.0016804785772028819,
+    "MaxLogit": 0.008153438568115234,
+    "Energy": 0.00777324366657961,
+    "Mahalanobis": 3.667487965918099,
+    "KNN": 0.00047434395949952357
+  },
+  "failures": [
+    {
+      "image_id": "Abyssinian_101",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_102",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_11",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_119",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_12",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_121",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_127",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_134",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_149",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_153",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_155",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_159",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_170",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_172",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_179",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_18",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_182",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_183",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_195",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Abyssinian_197",
+      "methods": [
+        "MSP",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Bengal_102",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Bengal_104",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Bengal_106",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Bengal_110",
+      "methods": [
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Bengal_12",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Bengal_120",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Bengal_125",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Bengal_13",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Bengal_130",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Bengal_131",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Bengal_133",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Bengal_137",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Bengal_142",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Bengal_143",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Bengal_156",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Bengal_159",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Bengal_165",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Bengal_166",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Bengal_170",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Bengal_191",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Birman_10",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Birman_101",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Birman_114",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Birman_115",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Birman_117",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Birman_121",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Birman_129",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Birman_13",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Birman_134",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Birman_14",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Birman_148",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Birman_150",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Birman_161",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Birman_162",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Birman_163",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Birman_166",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Birman_168",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Birman_181",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Birman_185",
+      "methods": [
+        "MSP",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Birman_186",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Bombay_103",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Bombay_107",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Bombay_117",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Bombay_119",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Bombay_120",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Bombay_126",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Bombay_127",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Bombay_129",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Bombay_133",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Bombay_136",
+      "methods": [
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Bombay_146",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Bombay_15",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Bombay_150",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Bombay_153",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Bombay_162",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Bombay_168",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Bombay_184",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Bombay_188",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Bombay_198",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "British_Shorthair_104",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "British_Shorthair_105",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "British_Shorthair_107",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "British_Shorthair_111",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "British_Shorthair_114",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "British_Shorthair_115",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "British_Shorthair_117",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "British_Shorthair_128",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "British_Shorthair_141",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "British_Shorthair_15",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "British_Shorthair_154",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "British_Shorthair_159",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "British_Shorthair_161",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "British_Shorthair_164",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "British_Shorthair_166",
+      "methods": [
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "British_Shorthair_169",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "British_Shorthair_174",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "British_Shorthair_190",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "British_Shorthair_199",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "British_Shorthair_201",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Egyptian_Mau_101",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Egyptian_Mau_106",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Egyptian_Mau_107",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Egyptian_Mau_109",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Egyptian_Mau_110",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Egyptian_Mau_119",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Egyptian_Mau_123",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Egyptian_Mau_126",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Egyptian_Mau_131",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Egyptian_Mau_132",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Egyptian_Mau_133",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Egyptian_Mau_146",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Egyptian_Mau_157",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Egyptian_Mau_170",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Egyptian_Mau_176",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Egyptian_Mau_178",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Egyptian_Mau_181",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Egyptian_Mau_185",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Egyptian_Mau_190",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Maine_Coon_103",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Maine_Coon_104",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Maine_Coon_107",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Maine_Coon_117",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Maine_Coon_121",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Maine_Coon_132",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Maine_Coon_134",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Maine_Coon_136",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Maine_Coon_140",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Maine_Coon_141",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Maine_Coon_142",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Maine_Coon_149",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Maine_Coon_153",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Maine_Coon_167",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Maine_Coon_17",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Maine_Coon_170",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Maine_Coon_171",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Maine_Coon_176",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Maine_Coon_19",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Maine_Coon_195",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Persian_100",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Persian_104",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Persian_11",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Persian_111",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Persian_12",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Persian_122",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Persian_129",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Persian_136",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Persian_155",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Persian_16",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Persian_161",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Persian_165",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Persian_171",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Persian_184",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Persian_191",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Persian_192",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Persian_195",
+      "methods": [
+        "MSP",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Persian_201",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Persian_202",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Persian_213",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Ragdoll_10",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Ragdoll_104",
+      "methods": [
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Ragdoll_117",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Ragdoll_12",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Ragdoll_126",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Ragdoll_128",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Ragdoll_134",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Ragdoll_145",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Ragdoll_152",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Ragdoll_153",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Ragdoll_158",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Ragdoll_159",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Ragdoll_164",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Ragdoll_170",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Ragdoll_178",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Ragdoll_18",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Ragdoll_183",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Ragdoll_193",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Ragdoll_197",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Ragdoll_201",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Russian_Blue_103",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Russian_Blue_106",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Russian_Blue_120",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Russian_Blue_122",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Russian_Blue_124",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Russian_Blue_127",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Russian_Blue_133",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Russian_Blue_153",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Russian_Blue_154",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Russian_Blue_156",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Russian_Blue_157",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Russian_Blue_160",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Russian_Blue_164",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Russian_Blue_166",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Russian_Blue_172",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Russian_Blue_177",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Russian_Blue_18",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Russian_Blue_185",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Russian_Blue_195",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Russian_Blue_198",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Siamese_103",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Siamese_104",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Siamese_115",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Siamese_120",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Siamese_131",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Siamese_137",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Siamese_139",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Siamese_142",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Siamese_144",
+      "methods": [
+        "MSP",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Siamese_146",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Siamese_147",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Siamese_149",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Siamese_157",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Siamese_167",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Siamese_169",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Siamese_17",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Siamese_18",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Siamese_185",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Siamese_193",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Siamese_208",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Sphynx_102",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Sphynx_107",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Sphynx_112",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Sphynx_115",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Sphynx_127",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Sphynx_129",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Sphynx_134",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Sphynx_137",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Sphynx_14",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Sphynx_143",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Sphynx_144",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Sphynx_148",
+      "methods": [
+        "MSP",
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Sphynx_15",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Sphynx_155",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Sphynx_178",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Sphynx_181",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Sphynx_187",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis",
+        "KNN"
+      ]
+    },
+    {
+      "image_id": "Sphynx_19",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Sphynx_194",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    },
+    {
+      "image_id": "Sphynx_206",
+      "methods": [
+        "MaxLogit",
+        "Energy",
+        "Mahalanobis"
+      ]
+    }
+  ]
+}
